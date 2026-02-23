@@ -1,0 +1,713 @@
+\documentclass[slovak]{book}
+\usepackage{scripture}
+\usepackage[a5paper, marginparsep=3mm]{geometry}
+\usepackage{graphicx}
+%\usepackage{package}
+\usepackage[program={lilypond}]{lyluatex}
+\usepackage[autocompile]{gregoriotex}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage[slovak]{babel}
+\usepackage{lettrine}
+\usepackage{etoolbox}
+\usepackage{marginalia}
+
+
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
+\makeatother
+
+\newcommand{\blankpage}{%
+    \null
+    \thispagestyle{empty}%
+    \newpage
+    }
+
+\newcommand{\markup}[1]{%
+    \indent\normalsize\textcolor{red}{#1}%
+    }
+
+\newcommand{\psalmheading}[1]{%
+    \begin{center}
+    \noindent\normalsize\textcolor{red}{#1}
+    \end{center}
+    }
+
+\newcommand{\partheading}[1]{%
+    \noindent\normalsize\textcolor{red}{\textmd{\uppercase{#1}}}
+}
+
+\newcommand*{\annotation}[1]{
+    \noindent\small\textcolor{red}{#1}\normalsize
+}
+
+\newcommand*{\annotationcenter}[1]{
+    \noindent\normalsize\begin{center}\textcolor{red}{#1}\end{center}\normalsize
+}
+
+\newcommand*{\predsedajuci}[1]{
+    \noindent\textbf{#1}\normalsize
+}
+
+\newcommand*{\euch}[1]{
+    \noindent\large\textbf{#1}\normalsize
+}
+
+\newcommand*{\startletter}[1]{
+    \noindent\Large\textbf{\textcolor{red}{#1}}\large
+}
+
+% usage: \uarc[sep][depth]{text}
+\NewDocumentCommand\uarc{O{.2ex} O{.3ex} m}{%
+    \tikz[baseline=(arced node.base)]{
+        \node [inner sep=0pt, outer sep=0pt] (arced node) {#3};
+        \draw [transform canvas={yshift=-#1}] (arced node.south west) parabola [parabola height=-#2] (arced node.south east);
+    }%
+}
+
+\scripturesetup{poetry/leftmargin=0pt}
+\setlength\parindent{1em}
+\setlength{\parskip}{0.5em} 
+\gresetinitiallines{0}
+\setmainfont{Minion Pro}
+
+\titleformat{\section}
+  {\color{red}\bfseries\MakeUppercase}{\thesection}{1em}{}
+
+\titleformat{\chapter}{\bfseries\filcenter\Large}{}{0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0em}{0.5em}
+\assignpagestyle{\chapter}{fancy}
+
+% Nastavenie štýlu strán
+\pagestyle{fancy}
+\fancyhf{} % Vymaže aktuálne nastavenia hlavičky a pätičky
+
+% Párne strany (Even) -> vľavo (Left)
+% [Číslo] [medzera 2em] [Názov kapitoly]
+\fancyhead[LE]{\bfseries\thepage \hspace{2em} \bfseries\textcolor{red}{Omša svätenia olejov}}
+
+% Nepárne strany (Odd) -> vpravo (Right)
+% [Názov kapitoly] [medzera 2em] [Číslo]
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[RO]{\bfseries\textcolor{red}{\leftmark} \hspace{2em} \thepage}
+
+% Nastavenie čiary
+\renewcommand{\headrulewidth}{0.4pt} % Hrúbka čiary pod hlavičkou
+\renewcommand{\footrulewidth}{0pt}   % Bez čiary nad pätičkou
+
+
+\begin{document}
+    \begin{titlepage}
+        \begin{center}
+            \vspace*{\fill}
+            \begin{huge}\textcolor{red}{\textbf{MISSA CHRISMATIS}}\end{huge}
+            \\\textbf{OMŠA SVÄTENIA OLEJOV}
+            \vspace*{0.5cm}
+            \\ \includegraphics[width=5cm]{./misachrismatis.jpg}
+            \vspace*{0.5cm}
+            \\ \textbf{Katedrála svätého Martina}
+            \\ \textit{Spišská Kapitula - Spišské Podhradie}
+            \vspace*{\fill}
+        \end{center}
+
+    \end{titlepage}
+
+\newpage
+\textbf{Texty v tejto brožúre, prevzaté z oficiálnych liturgických kníh, sa zhodujú s pôvodinou a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišskom Podhradí.} 
+\vspace*{\fill}
+\begin{center}
+    \textbf{Kňazský seminár biskupa Jána Vojtaššáka}
+    \\ \textbf{Spišská Kapitula — Spišské Podhradie}
+    \\ \textbf{MMXXVI}
+\end{center}
+\vspace*{\fill}
+\newpage
+
+\chapter{Úvodné obrady a liturgia slova}
+\section*{Introit}
+\lilypondfile{./Noty/vstupny_spev.ly}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    %Treba dolpniť podčiarknutia a zvýraznenia pre spev a tie kvačky pod slabikami...
+    \item Mo\textbf{je} srdce prekypuje krásnymi slovami, \textcolor{red}{\textbf{\GreDagger}}\space svoje verše ve\textbf{nu}jem \underline{krá}ľo\textbf{vi.} \textbf{\textcolor{red}{\gresixstar}} Môj \textbf{ja}zyk je ako pero \textbf{rých}lo\uarc{pis}ca. \textbf{\textcolor{red}{— \Rbar}}
+    \item Ty \textbf{si} najkrajší z ľudských synov. \textbf{\textcolor{red}{\GreDagger}}\space Z tvojich perí \textbf{ply}nie underline{mi}lo\textbf{ta.} \textbf{\textcolor{red}{\gresixstar}} Pre\textbf{to} ťa Boh po\textbf{žeh}nal \underline{na}veky. \textbf{\textcolor{red}{— \Rbar}}
+    \item Ty \textbf{naj}mocnejší, pripáš \textbf{si} meč \underline{na} bed\textbf{rá;} \textbf{\textcolor{red}{\gresixstar}} svo\textbf{ju} vele\textbf{bu} a \underline{dôs}tojnosť. \textbf{\textcolor{red}{— \Rbar}}
+    \item Vo \textbf{svo}jej dôstojnosti šťastne vytiahni, nasadni na voz \textbf{\textcolor{red}{\GreDagger}}\space a bojuj zapravdu, lásku a \textbf{spra}vod\underline{li}\textbf{vosť.} \textbf{\textcolor{red}{\gresixstar}} Nech \textbf{ťa} tvoja pravica učí konať ú\textbf{žas}né \uarc{skut}ky. \textbf{\textcolor{red}{— \Rbar}}
+    \item Tvo\textbf{je} ostré šípy \textbf{\textcolor{red}{\GreDagger}}\space zasiahnu srdcia kráľových \textbf{ne}pria\underline{te}\textbf{ľov;} \textbf{\textcolor{red}{\gresixstar}} pod\textbf{da}jú \textbf{sa} ti \underline{ná}rody. \textbf{\textcolor{red}{— \Rbar}}
+    \item Tvoj \textbf{trón,} Bože, \textbf{tr}vá \underline{na}ve\textbf{ky} \textbf{\textcolor{red}{\gresixstar}} a \textbf{žez}lo tvojho kráľovstva je žezlo \textbf{spra}\-vod\underline{li}vosti. \textbf{\textcolor{red}{— \Rbar}}
+    \item Mi\textbf{lu}ješ spravodlivosť a nenávidíš neprávosť, \textbf{\textcolor{red}{\GreDagger}}\space preto ťa Boh, tvoj Boh, pomazal o\textbf{le}jom \underline{ra}do\textbf{sti} \textbf{\textcolor{red}{\gresixstar}} viac \textbf{a}ko \textbf{tvo}jich \uarc{dru}hov. \textbf{\textcolor{red}{— \Rbar}}
+    \item Tvoj \textbf{o}dev vonia myrhou, alo\textbf{ou} a \underline{ka}si\textbf{ou} \textbf{\textcolor{red}{\gresixstar}} a \textbf{roz}veseľuje ťa zvuk harfy z palácov zo \textbf{slo}no\uarc{vi}ny. \textbf{\textcolor{red}{— \Rbar}}
+\end{enumerate}
+
+\noindent\textcolor{red}{\textbf{JKS 244}}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item \textbf{K stolu božej láskavosti} - s pokorou prichádzame, - pred Ježišom v skrúšenosti - na kolená padáme, - [:keď večere Pána slávnej, - lásky jeho k svetu dávnej, - dnes pamiatku v úcte zjavnej - slávne vykonávame.:]
+    \item Tebe slávu bez skončenia, - Kriste, prespevujeme, - pre večeru tú spasenia - teba zvelebujeme. - [:Ty, nesmiernej velebnosti, - prijmi naše povďačnosti, - ktoré tvojej láskavosti - teraz prisluhujeme.:]
+    \item Veríme ťa prítomného - vo Sviatosti Oltárnej, - Bohčloveka láskavého, - čo v pamiatke preslávnej - [:pod spôsobom vína, chleba - k požívaniu dávaš seba - nám, veriacim, Pane z neba, - z lásky k hriešnym nám zjavnej.:]
+\end{enumerate}
+
+\section*{Kyrie}
+\lilypondfile{./Noty/kyrie.ly}
+
+\section*{Oslavná pieseň - glória}
+\lilypondfile{./Noty/gloria.ly}
+
+\section*{Medzispev}
+\lilypondfile{./Noty/zalm.ly}
+\lilypondfile{./Noty/aleluja.ly}
+
+\chapter{Obnovenie kňazských sľubov}
+\annotation{Odpovedajú len prítomní kňazi.}
+\annotation{Po homílii sa biskup prihovorí takto alebo podobne:}
+
+\predsedajuci{Milovaní bratia, pri výročnej spomienke na deň, keď Kristus
+Pán dal apoštolom i nám účasť na svojom kňazstve, sa vás
+pýtam: Chcete pred svojim biskupom a pred Božím ľudom
+obnoviť sľuby, ktoré ste kedysi urobili?}
+
+\annotation{Všetci kňazi naraz odpovedia:}
+\\Chcem.
+
+\predsedajuci{Chcete sa bližšie primknúť k Ježišovi, nášmu Pánovi, a lepšie
+sa mu prispôsobiť, zrieknuť sa samých seba a verne plniť
+kňazské poslanie, ktoré ste z lásky ku Kristovi a jeho Cirkvi
+vzali na seba v deň svojej kňazskej vysviacky?}
+
+\annotation{Všetci kňazi:}
+\\Chcem.
+
+\annotation{Potom sa biskup obráti k ľudu a pokračuje.}
+\annotation{Odpovedajú spoločne všetci prítomní:}
+
+\predsedajuci{A vy, milovaní bratia a sestry, modlite sa za svojich kňazov,
+nech ich Pán zahrnie svojimi darmi, aby vás ako verní
+služobníci Krista, najvyššieho kňaza, viedli k nemu,
+k prameňu spásy.}
+
+\annotation{Ľud:}
+\\Kriste, uslyš nás. Kriste, vyslyš nás.
+
+\predsedajuci{Modlite sa aj za mňa, aby som verne plnil svoje apoštolské
+poslanie a bol medzi vami každý deň živým a dokonalejším
+obrazom Krista kňaza, dobrého pastiera, učiteľa a služobníka
+všetkých.}
+
+\annotation{Ľud:}
+\\Kriste, uslyš nás. Kriste, vyslyš nás.
+
+\predsedajuci{Nech nás Pán zachová vo svojej láske a nech nás všetkých
+kňazov i ľud, privedie do večného života.}
+
+\annotation{Všetci:}
+\\Amen.
+
+\chapter{Liturgia eucharistie}
+\section*{Hymnus}
+\lilypondfile{./Noty/vykupitel_prijmi.ly}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Plody stromu, k posväteniu živným slnkom zrodené, prináša ľud
+    zbožný tomu, čo dal svetu spasenie. \textbf{\textcolor{red}{— \Rbar}}
+    \item Vznešený kráľ večnej vlasti, posväť teda láskavo olej na znak, že si
+    obral zlého ducha o právo. \textbf{\textcolor{red}{— \Rbar}}
+    \item Novú silu daruj krizmou pomazaným vo viere, by zranená dôstojnosť
+    sa skvela v novej nádhere. \textbf{\textcolor{red}{— \Rbar}}
+    \item A keď krstná voda z duše všetky viny vyhostí, na čele kríž svätou
+    krizmou vleje do nej milosti. \textbf{\textcolor{red}{— \Rbar}}
+    \item V lone Otca narodený z lona Matky ľudský syn, krizmou daj lúč, uväzni
+    smrť, pomstiteľku našich vín. \textbf{\textcolor{red}{— \Rbar}}
+    \item Tento sviatok každoročne vnáša radosť medzi nás, nech je zasvätený
+    chvále, ktorú neumlčí čas. \textbf{\textcolor{red}{— \Rbar}}
+\end{enumerate}
+
+\section*{Offertórium - JKS 244/4}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \setcounter{enumi}{3}
+    \item Oltár je, hľa, tvoj stôl svätý, - kde ti obetuje kňaz - chleba, vína dve podstaty, - jak si nám to kázal raz; - [:obeť veľkej velebnosti - ruší dávne pamätnosti, - pred tvár tvojej láskavosti - slávnostne pristupuje.:]
+    \item Naveky si, svätý Bože, - neba, zeme ty Pane, - všetko ťa len chváliť môže, - velebiť neprestajne. - [:V prevelebnej tu Sviatosti, - v dare toľkej láskavosti, - v svojej svätej prítomnosti - skrytý byť neprestaneš.:]
+\end{enumerate}
+
+\section*{Sanctus}
+\lilypondfile{./Noty/sanctus.ly}
+
+\section*{
+    \begin{center}
+        Prvá eucharistická modlitba \\
+        (Rímsky kánon)
+    \end{center}
+}
+
+\annotation{Hlavný celebrant rozopne ruky a povie:}
+\marginalia[pos=left, style={\color{red}}]{Hl}
+\euch{\startletter{T}eba teda, najláskavejší Otče,
+\\pokorne vzývame a prosíme
+\\skrze Ježiša Krista,
+\\tvojho Syna a nášho Pána:}
+
+\annotation{Zopne ruky a povie:}
+\\\euch{láskavo prijmi}
+
+\annotation{Urobí jeden znak kríža spolu nad chlebom a kalichom, hovoriac:}
+\\\euch{a požehnaj \textcolor{red}{\grecross} tieto dary, tieto žertvy,
+\\tieto sväté a nepoškvrnené obety.}
+
+\annotation{Pokračuje s rozopätými rukami:}
+\\\euch{\startletter{P}rinášame ti ich najmä
+\\za tvoju svätú katolícku Cirkev
+\\v jednote s tvojím služobníkom,
+\\naším pápežom M., s naším biskupom M.*
+\\a so všetkými, ktorí vyznávajú pravú,
+\\katolícku a apoštolskú vieru.
+\\Daruj svojej Cirkvi pokoj,
+\\chráň ju, zjednocuj a spravuj po celom svete.}
+
+\annotationcenter{Spomienka na živých}
+\marginalia{\textcolor{red}{1k}}
+\euch{\startletter{P}amätaj, Pane,
+\\na svojich služobníkov a služobnice \textcolor{red}{M.} a \textcolor{red}{M.}}
+
+\annotation{Zopne ruky a chvíľu sa modlí za tých, ktorých si chce osobitne pripomenúť. Potom
+s rozopätými rukami pokračuje:}
+\\\euch{Pamätaj i na všetkých tu zhromaždených.
+\\Ty poznáš ich vieru
+\\a vieš, že sú ti oddaní.
+\\Za nich ti prinášame túto obetu chvály.
+\\Aj oni sami ti ju obetujú za seba
+\\i za všetkých svojich drahých,
+\\za svoje vykúpenie,
+\\za nádej na večnú spásu i za časné blaho
+\\a predkladajú svoje prosby tebe,
+\\Bohu večnému, živému a pravému.}
+
+\annotationcenter{Spomienka na svätých}
+\marginalia{\textcolor{red}{2k}}\euch{\startletter{V} spoločenstve s oslávenou Cirkvou
+\\s úctou si spomíname
+\\najmä na preblahoslavenú Máriu, vždy Pannu,
+\\Rodičku Boha a nášho Pána Ježiša Krista,
+\\ale i na svätého Jozefa, jej ženícha,
+\\a na tvojich svätých apoštolov a mučeníkov
+\\Petra a Pavla, Ondreja,
+\\\textcolor{red}{(}Jakuba, Jána, Tomáša, Jakuba, Filipa,
+\\Bartolomeja, Matúša, Šimona a Tadeáša,
+\\Lína, Kléta, Klimenta, Sixta,
+\\Kornela, Cypriána, Vavrinca, Chryzogóna,
+\\Jána a Pavla, Kozmu a Damiána\textcolor{red}{)}
+\\i na všetkých tvojich svätých.
+\\Pre ich zásluhy a na ich prosby
+\\poskytni nám vždy a všade svoju pomoc a ochranu.
+\\\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
+
+\annotation{Hlavný celebrant s rozopätými rukami pokračuje:}
+\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{P}ane, milostivo prijmi túto obetu,
+\\ktorú ti predkladáme my, tvoji služobníci,
+\\i celá tvoja rodina.
+\\Spravuj naše dni vo svojom pokoji,
+\\zachráň nás od večného zatratenia
+\\a pripočítaj k zástupu svojich vyvolených.}
+
+\annotation{Zopne ruky.}
+\\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
+
+\annotation{Vystrie ruky nad obetné dary a povie (i všetci koncelebranti vystrú ruku a povedia):}
+\\\marginalia{\textcolor{red}{Vš}}\euch{Prosíme ťa, Bože,
+\\láskavo urob túto obetu
+\\vo všetkom požehnanou, dokonalou,
+\\prijatou, duchovnou a ľúbeznou,
+\\aby sa nám stala Telom a Krvou
+\\tvojho milovaného Syna,
+\\nášho Pána Ježiša Krista.}
+
+\annotation{Zopne ruky.}
+\\\annotation{V nasledujúcich formulách treba predniesť Pánove slová jasne a zrozumiteľne,
+ako si to vyžaduje ich povaha.}
+\\\euch{\startletter{O}n večer pred svojím umučením}
+
+\annotation{Hlavný celebrant vezme chlieb, drží ho trocha pozdvihnutý nad oltárom a pokračuje (koncelebranti s ním):}
+\\\euch{vzal chlieb
+\\do svojich svätých a ctihodných rúk,}
+\\\annotation{Pozdvihne oči.}
+\\\euch{pozdvihol oči k nebu,
+\\k tebe, Bohu, svojmu všemohúcemu Otcovi,
+\\vzdával ti vďaky a dobrorečil, lámal chlieb
+\\a dával svojim učeníkom, hovoriac:}
+
+\annotation{Trocha sa skloní. (koncelebranti Pánové slová vyslovujú s pravicou vystretou smerom k chlebu, ak je to vhodné)}
+\\\euch{ \begin{center}VEZMITE A JEDZTE Z NEHO VŠETCI,
+\\LEBO TOTO JE MOJE TELO,
+\\KTORÉ SA OBETUJE ZA VÁS.\end{center}}
+
+\annotation{Hlavný celebrant ukáže konsekrovanú hostiu ľudu,
+znova ju položí na paténu a pokľaknutím adoruje}
+\\\annotation{Koncelebranti pri pozdvihovaní pozrú na hostiu a potom sa pri pokľaknutí hlavného celebranta hlboko uklonia.}
+
+\annotation{Potom pokračujú:}
+\\\euch{Podobne po večeri}
+
+\annotation{Hlavný celebrant kalich, drží ho trocha zdvihnutý nad oltárom a spolu s koncelebrantmi pokračuje:}
+\\\euch{vzal do svojich svätých a ctihodných rúk
+\\aj tento preslávny kalich,
+\\znova ti vzdával vďaky, dobrorečil
+\\a dal ho svojim učeníkom, hovoriac:}
+
+\annotation{Trocha sa skloní. (koncelebranti Pánové slová vyslovujú s pravicou vystretou smerom ku kalichu, ak je to vhodné)}
+\euch{ \begin{center}VEZMITE A PITE Z NEHO VŠETCI,
+\\LEBO TOTO JE KALICH MOJEJ KRVI,
+\\KTORÁ SA VYLIEVA ZA VÁS I ZA MNOHÝCH
+\\NA ODPUSTENIE HRIECHOV.
+\\JE TO KRV NOVEJ A VEČNEJ ZMLUVY.
+\\TOTO ROBTE NA MOJU PAMIATKU. \end{center}}
+
+\annotation{Ukáže kalich ľudu, znova ho položí na korporál a pokľaknutím adoruje.}
+\\\annotation{Koncelebranti pri pozdvihovaní pozrú na kalich a potom sa pri pokľaknutí hlavného celebranta hlboko uklonia.}
+
+\annotation{Potom hlavný celebrant povie:}
+\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{H}ľa, tajomstvo viery.}
+\\\annotation{Ľud pokračuje zvolaním:}
+\\Smrť tvoju, Pane, zvestujeme
+\\a tvoje zmŕtvychvstanie vyznávame, kým neprídeš v sláve.
+\\\annotation{Alebo:}
+\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{V}yznajme tajomstvo viery.}
+\\Pane, keď jeme tento chlieb a pijeme z tohto kalicha,
+\\zvestujeme tvoju smrť, kým neprídeš v sláve.
+\\\annotation{Alebo:}
+\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{V}eľké je tajomstvo viery.}
+\\Spasiteľ sveta, zachráň nás,
+\\veď ty si nás vykúpil svojím krížom a zmŕtvychvstaním.
+
+\annotation{Potom všetci koncelebranti spolu s hlavným celebrantom s rozpätými rukami hovoria:}
+\\\marginalia[\textcolor{red}{Vš}]{}\euch{\startletter{P}reto, Pane, my, tvoji služobníci,
+\\aj tvoj svätý ľud, slávime pamiatku
+\\požehnaného umučenia a zmŕtvychvstania
+\\i slávneho nanebovstúpenia Ježiša Krista,
+\\tvojho Syna a nášho Pána,
+\\a prinášame tebe, vznešenému Bohu,
+\\dary z tvojich darov, svätý chlieb večného života
+\\a kalich večnej spásy
+\\ako obetu čistú, obetu svätú,
+\\obetu nepoškvrnenú.}
+
+\euch{\startletter{Z} hliadni na ne vľúdnym a láskavým okom
+\\a milostivo ich prijmi,
+\\ako si milo prijal obetné dary
+\\svojho spravodlivého služobníka Ábela,
+\\žertvu nášho praotca Abraháma
+\\i svätú a nepoškvrnenú obetu
+\\tvojho veľkňaza Melchizedecha.}
+
+\annotation{Sklonení so zopätými rukami pokračuju:}
+\\\euch{\startletter{P}okorne ťa prosíme, všemohúci Bože,
+\\prikáž svojmu svätému anjelovi
+\\preniesť tieto dary na tvoj nebeský oltár,
+\\pred tvár tvojej božskej velebnosti,
+\\aby nás všetkých,
+\\ktorí máme účasť na tejto oltárnej obete
+\\a prijmeme presväté Telo a Krv tvojho Syna,}
+
+\annotation{Vzpriamia sa a prežehnajú, pritom hovoria:}
+\\\euch{naplnilo hojné nebeské požehnanie a milosť.}
+
+\annotation{Zopnú ruky.}
+\\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
+
+\annotation{Spomienka na zosnulých}
+\annotation{Príhovory „Pamätaj, Pane“ za zomrelých a „Aj nás, svojich
+hriešnych služobníkov“ je vhodné zveriť jednému alebo dvom
+koncelebrantom a každý sám prednesie tieto modlitby s rozopätými
+rukami a zvýšeným hlasom.}
+\\\marginalia{\textcolor{red}{1k}}\euch{\startletter{P}amätaj, Pane,
+\\i na svojich služobníkov
+\\a služobnice \textcolor{red}{M.} a \textcolor{red}{M.},
+\\ktorí nás predišli do večnosti
+\\so znakom viery
+\\a spia spánkom pokoja.}
+\\\annotation{Zopne ruky a všetci sa chvíľu modlia za zosnulých, ktorých si chcú
+osobitne pripomenúť.}
+
+\annotation{Potom s rozopätými rukami pokračuje:}
+\\\euch{Prosíme ťa, Pane, daj im a všetkým,
+\\ktorí odpočívajú v Kristovi,
+\\prebývať na mieste blaha, svetla a pokoja.}
+
+\annotation{Zopnú ruky.}
+\\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
+
+\annotation{Pri slovách „Aj nás, svojich hriešnych služobníkov“ všetci konce-
+lebranti sa bijú v prsia.}
+\\\marginalia{\textcolor{red}{k2}}\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}
+\\\annotation{S rozopätými rukami pokračuje:}
+\\\euch{ktorí dúfame v tvoje prehojné milosrdenstvo,
+\\priveď do spoločenstva
+\\svojich svätých apoštolov a mučeníkov:
+\\Jána, Štefana, Mateja, Barnabáša,
+\\\textcolor{red}{(}Ignáca, Alexandra, Marcelína, Petra,
+\\Felicity, Perpetuy, Agáty, Lucie,
+\\Agnesy, Cecílie, Anastázie\textcolor{red}{)}
+\\a všetkých tvojich svätých.
+\\Prosíme ťa, prijmi nás do ich spoločenstva,
+\\nie pre naše zásluhy,
+\\ale pre tvoje veľké zľutovanie.}
+\\\annotation{Zopne ruky.}
+\\\euch{Skrze nášho Pána Ježiša Krista.}
+
+\section*{
+    \begin{center}
+        POŽEHNANIE OLEJA NA POMAZANIE CHORÝCH
+    \end{center}
+}
+
+\annotation{Skôr než biskup povie \textcolor{black}{„Skrze neho, ty, Bože“} v Prvej eucharistickej
+modlitbe alebo doxológiu v Tretej eucharistickej modlitbe, diakon alebo
+kňaz, donesie nádobu s olejom na pomazanie chorých k oltáru a drží ju
+pred biskupom.}
+\\\annotation{Biskup sa pri požehnaní oleja na pomazanie chorých modlí túto
+modlitbu:}
+\\\predsedajuci{Bože, Otče, ty potešuješ všetkých
+\\a chceš, aby chorí našli v tvojom Synovi útechu a zdravie.
+\\Pozri na našu vieru a vypočuj naše prosby:
+\\zošli z neba Utešiteľa Ducha Svätého
+\\na tento olej — dar zelenej olivy —,
+\\ktorý si nám dal na posilnenie tela,
+\\a daj, nech tvoje sväté \textcolor{red}{\grecross} požehnanie
+\\chráni telo, dušu i ducha každého,
+\\kto prijme sviatosť pomazania chorých;
+\\nech ho zbaví všetkých bolestí,
+\\všetkých neduhov a chorôb.
+\\Nech je nám tento olej požehnaný
+\\v mene nášho Pána Ježiša Krista,
+\\\textcolor{red}{(}ktorý s tebou žije a kraľuje na veky vekov.}
+
+\noindent\textcolor{red}{\Rbar.:} Amen\textcolor{red}{)}.
+
+\annotation{Záver \textcolor{red}{„ktorý s tebou žije“} sa používa len vtedy, keď sa toto
+požehnanie koná mimo eucharistickej modlitby.}
+\\\annotation{Po požehnaní oleja sa nádoba s olejom na pomazanie chorých
+položí na pôvodné miesto a v omši sa pokračuje ako zvyčajne, až do
+prijímania vrátane.Po požehnaní oleja hovorí sám hlavný celebrant:}
+
+\marginalia{\textcolor{red}{Hl}}\euch{\startletter{S}krze neho ty, Pane,
+\\všetky tieto dary stále tvoríš,
+\\posväcuješ, oživuješ, požehnávaš a nám dávaš.}
+
+
+\annotation{Hlavný celebrant vezme paténu s hostiou a jeden z koncelebrantov,
+ak niet diakona, kalich, pozdvihnú ich a hovoria:}
+
+\gregorioscore{./Noty/peripsum.gabc}
+\annotation{Všetci:}
+\\Amen.
+
+\chapter{Obrad prijímania}
+\section*{Lámanie chleba}
+\lilypondfile{./Noty/agnus.ly}
+
+\section*{Spev na prijímanie - JKS 270}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Klaniam sa ti vrúcne, - Bože večitý, - pod spôsobom chleba - z lásky ukrytý! - [:Srdce moje tebe - sa len oddáva, - že si Pánom jeho - vďačne uznáva.:]
+    \item Zrak môj i chuť chceli, - by ma oklamať, - ale sluch ma učí - pevnú vieru mať. - [:Verím, čo Syn Boží - ustanovil nám, - ten klamať nemôže, - kto je Pravda sám.:]
+    \item Na kríži sa skrylo - samo božstvo len, - tu i človečenstvo - skryté zbožňujem. - [:V oboje ja verím, - Bože vznešený, - a prosím, čo prosil - lotor skrúšený.:]
+    \item Ó, pamiatka smrti - Krista Ježiša, - chlieb náš živý, sladkosť - sveta najvyššia, - [:daj, nech duch môj vždy len - tebou sa živí, - po sladkosti tvojej - vždy je dychtivý.:]
+    \item Ó, Baránku Boží, - Kriste, Pane môj, - v neskonalej láske - dnes sa so mnou spoj. - [:Tvojej krvi stačí - kvapka jediná, - aby z všehomíra zmyla sa vina.:]
+\end{enumerate}
+
+\section*{Ó, srdce kňaszké kristovo}
+\lilypondfile{./Noty/osrdceknazske.ly}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Ó, Srdce kňazské Kristovo, daj svätých kňazov ľudu nášmu, nech
+    vzplanie láskou ich slovo, nech stvorí v ľudstve dušu krásnu. Ó,
+    Srdce Krista atď. 
+    \item Ó, Srdce kňazské Kristovo, bôľ lásky tvojej sa
+    nás týka, veď odmrštia ťa surovo, náš hriech tkvie v tebe ako dýka.
+    Ó, Srdce Krista atď. 
+    \item Ó, Srdce kňazské Kristovo, nad nami zmiluj
+    sa hriešnymi, hľa, každý tebe dá slovo: Viac už viac nebudeme
+    zlými. Ó, Srdce Krista atď.
+\end{enumerate}
+
+\section*{Po prijímaní}
+
+\predsedajuci{Všemohúci Bože,
+\\ty nás obnovuješ svojimi sviatosťami; \textcolor{red}{\textbf{\gresixstar}}
+\\vrúcne ťa prosíme, \textcolor{red}{\textbf{—}}
+\\dopraj, aby sme sa mohli stať
+\\príjemnou vôňou Ježiša Krista.
+\\Lebo on žije a kraľuje na veky vekov.}
+
+\textcolor{red}{Všetci:} Amen
+
+\chapter{POŽEHNANIE OLEJA KATECHUMENOV a posvätenie krizmy}
+\section*{
+    \begin{center}
+        POŽEHNANIE OLEJA KATECHUMENOV
+    \end{center}
+}
+
+\annotation{Po modlitbe po prijímaní zíde biskup s asistenciou k pripravenému
+stolu uprostred presbytéria. Všetci ostatní ostávajú na mieste. Biskup
+najprv požehná olej katechumenov.}
+\\\annotation{Biskup tvárou k ľudu a s rozopätými rukami sa modlí túto
+modlitbu:}
+\\\predsedajuci{Bože, opora a mocná ochrana svojho ľudu,
+\\ty si stvoril olej ako symbol sily;
+\\láskavo ho \textcolor{red}{\textbf{\grecross}} požehnaj
+\\a katechumenom, ktorí ním budú pomazaní,
+\\daj odvahu, božskú múdrosť a silu,
+\\aby hlbšie chápali Kristovo evanjelium
+\\a odhodlali sa horlivo žiť kresťanským životom;
+\\prijmi ich za svoje deti
+\\a daj im nový, radostný život vo svojej Cirkvi.
+\\Skrze Krista, nášho Pána.}
+
+\noindent \textcolor{red}{Všetci:} Amen.
+
+\section*{
+    \begin{center}
+        POSVÄTENIE KRIZMY
+    \end{center}
+}
+\annotation{Biskup vleje vonné látky do oleja, a tak pripraví krizmu, ak už
+predtým nebola pripravená. Keď to urobil, prednesie výzvu na
+modlitbu.}
+
+\predsedajuci{Milí bratia a sestry,
+\\prosme všemohúceho Boha Otca,
+\\aby požehnal a posvätil túto krizmu
+\\a vo všetkých, ktorí ňou budú pomazaní,
+\\nech vnútorné pôsobí Božia milosť,
+\\aby dosiahli spásu.}
+
+\annotation{Biskup môže dýchnuť na krizmu. Potom sa s rozopätými rukami
+pomodlí jednu z nasledujúcich posväcujúcich modlitieb:}
+
+\predsedajuci{Bože, od teba pochádza všetok vzrast
+\\a duchovný pokrok;
+\\láskavo prijmi ďakovnú službu,
+\\ktorú ti našimi ústami a s radosťou prináša Cirkev.
+\\Ty si na počiatku prikázal zemi,
+\\aby vydala ovocné stromy, medzi nimi aj olivy,
+\\darkyne tohto oleja na prípravu svätej krizmy.
+\\Už prorok Dávid videl účinok tvojich sviatostí
+\\a ospieval olej, ktorým naša tvár zažiari radosťou;
+\\keď potopa očistila svet od hriechu,
+\\holubica priniesla olivovú ratolesť,
+\\čím naznačila budúcu úlohu olivy
+\\a oznámila, že sa svetu vracia pokoj.
+\\To sa v jasných účinkoch zjavuje aj dnes:
+\\krstná voda zmýva nám všetky hriechy a priestupky
+\\a tento olej dáva našim tváram radosť a pôvab.
+\\Aj Mojžišovi si dal príkaz,
+\\aby svojho brata Árona, vodou obmytého,
+\\pomazal olejom za kňaza.
+\\Ešte väčšej cti sa dostalo tomuto úkonu,
+\\keď tvoj Syn a náš Pán Ježiš Kristus
+\\požiadal Jána Krstiteľa, aby ho pokrstil v Jordáne.
+\\Vtedy si z neba poslal Ducha Svätého v podobe holubice
+\\a dosvedčil si,
+\\že v tomto tvojom jedinom Synovi máš najväčšiu záľubu.
+\\Ty si zjavne potvrdil Dávidovo proroctvo,
+\\že Mesiáš bude pomazaný olejom radosti
+\\viac ako ostatní ľudia.}
+
+\annotation{Všetci koncelebranti vystrú pravú ruku ku krizme a mlčky ju držia
+vystretú až do konca modlitby:}
+\\\predsedajuci{Preto ťa, Pane, prosíme,
+\\požehnaj a \textcolor{red}{\grecross} posväť tento olej
+\\a vlož doň silu Ducha Svätého
+\\a moc Ježiša Krista,
+\\od ktorého krizma dostala meno.
+\\Ako si pomazával kňazov, kráľov, prorokov,
+\\tvojich svedkov,
+\\tak nech táto krizma vo sviatostnom pomazaní
+\\zavŕši dielo spásy
+\\a dá plnosť života tým,
+\\čo vychádzajú obnovení z krstného kúpeľa.
+\\Posväť ich pomazaním,
+\\zbav ich následkov prvotného hriechu,
+\\aby sa stali chrámom tvojej velebnosti
+\\a žiarili čistým a tebe milým životom.
+\\A keď si ich touto sviatosťou
+\\vyznačil kráľovskou, kňazskou a prorockou hodnosťou,
+\\obleč ich do rúcha mravnej bezúhonnosti
+\\a horlivosti v tvojej službe.
+\\Nech je svätá krizma posilou pre spásu tým,
+\\ktorí sa znovuzrodili z vody a z Ducha Svätého,
+\\aby mali účasť na večnom živote v nebeskej sláve.
+\\Skrze Krista, nášho Pána.}
+
+\noindent\textcolor{red}{Všetci:} Amen.
+
+\annotation{Všetci koncelebranti vystrú pravú ruku ku krizme a mlčky ju držia
+vystretú až do konca modlitby:}
+\\\predsedajuci{Preto ťa, Pane, prosíme,
+\\nech je nám zmes týchto voňavých látok a oleja
+\\znakom tvojho svätého požehnania \textcolor{red}{\grecross} a tvojej milosti;
+\\našim bratom a sestrám,
+\\ktorí budú poznačení týmto pomazaním,
+\\uštedri dary Ducha Svätého;
+\\miesta a predmety,
+\\ktoré budú poznačené svätým olejom,
+\\ozdob žiarou posvätnosti.
+\\A tajomná sila tohto pomazania
+\\nech pôsobí najmä na rozkvet tvojej Cirkvi,
+\\aby dospela do plnosti,
+\\kým ty, ktorý sa skvieš večným svetlom,
+\\nebudeš všetko vo všetkých s Kristom v Duchu Svätom
+\\po všetky veky vekov.}
+
+\noindent \textcolor{red}{Všetci:} Amen.
+
+\annotation{Po posvätení krizmy sa biskup vráti ku katedre a môže kňazom
+odovzdať oleje takto alebo podobne:}
+
+\textbf{Milovaní bratia,}
+
+\textbf{Kristus, Učiteľ, Kňaz a Pastier nás povolal k sviatostnému
+kňazstvu. V tomto eucharistickom slávení sme obnovili sľub,
+že budeme žiť čoraz dôstojnejšie zodpovedne povolaniu, ktoré
+sme prijali. Posvätili sme krizmu, požehnali olej katechume-
+nov a olej chorých, aby sme zvýraznili tajomstvo Cirkvi ako
+sviatosti Krista, ktorá posväcuje každú realitu a situáciu nášho
+života.}
+
+\textbf{Vám, kňazi, sa zverujú tieto oleje, aby vašou službou prúdila
+v dušiach Božia milosť, prostriedok sily a života. Vážte si, ctite
+a s osobitnou starostlivosťou uchovávajte tieto oleje, znaky
+Božej milosti. Osoby, miesta a veci, ktoré budú nimi poznače-
+né, môžu žiariť tou istou Božou svätosťou, ktorou obdivuhod-
+ným darom svojej lásky chcel, aby sa vo sviatostných znakoch
+mysticky obnovili udalosti dejín spásy.}
+\\\annotation{Nakoniec môže ešte ľudu povedať niekoľko slov, po ktorých
+zakončí slávenie záverečným požehnaním.}
+\\\annotation{Po záverečnom požehnaní na konci omše vloží biskup tymian do
+kadidelnice. Chór a ľud zatiaľ spieva pápežskú hymnu \textcolor{black}{\textit{V sedembrežnom kruhu
+Ríma}}. Po skončení spevu asistujúci odídu v sprievode do sakristie. Posvätné
+oleje nesú určení posluhujúci hneď za krížom.}
+
+\section*{Na záver: JKS 523}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item V sedmobrežnom kruhu Ríma, - kde sa Petra chrám vypína. - Z tisíc
+    hrdiel sa ozýva - pieseň nábožná, horlivá: - [:Živ, Bože, Otca Svätého, -
+    námestníka Kristovho!:]
+\end{enumerate}
+
+\noindent\textcolor{red}{\textbf{JKS 394}}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Ó, Mária bolestivá, - naša ochrana, - slovenský náš národ volá: - Pros
+    za nás Boha. - [:Ty si Mať dobrotivá, - Patrónka ľútostivá, - oroduj vždy za
+    náš národ - u svojho Syna.:]
+    \item Matka drahá, spomni na nás - tu pod Tatrami, - verní sme my svätej
+    Cirkvi, - prebývaj s nami! - [:Ty si Mať dobrotivá, - Patrónka ľútostivá, -
+    oroduj vždy za náš národ - u svojho Syna.:]
+    \item Po horách i po dolinách - venčíme tvoj chrám, - pútne miesta volajú
+    ti: - Matka, národ chráň! - [:Ty si Mať dobrotivá, - Patrónka ľútostivá, -
+    oroduj vždy za náš národ - u svojho Syna.:]
+    \item Hlad, mor, vojny odstráň od nás, - vypros pokoja, - slovenský ľud
+    nech vždy stráži - ochrana tvoja! - [:Ty si Mať dobrotivá, - Patrónka
+    ľútostivá, - oroduj vždy za náš národ - u svojho Syna.:]
+    \item Tebe sa tu oddávame, - Matka, pomôž nám, - by sme i my i potomci -
+    vyhli vždy vojnám. - [:Ty si Mať dobrotivá, - Patrónka ľútostivá, - oroduj
+    vždy za náš národ - u svojho Syna.:]
+\end{enumerate}
+
+\end{document}

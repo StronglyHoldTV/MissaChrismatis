@@ -1,0 +1,9 @@
+*.pdf
+*.gaux
+*.fls
+*.fdb_latexmk
+*.aux
+*.log
+*.synctex.gz
+/tmp-gre/
+/tmp-ly/
