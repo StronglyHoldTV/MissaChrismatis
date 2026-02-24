@@ -1,9 +1,8 @@
-\documentclass[slovak]{book}
+\documentclass[slovak,twoside]{book}
 \usepackage{scripture}
-\usepackage[a5paper, marginparsep=3mm]{geometry}
+\usepackage[a5paper, outer=20mm, inner=20mm]{geometry}
 \usepackage{graphicx}
-%\usepackage{package}
-\usepackage[program={lilypond}]{lyluatex}
+\usepackage[program=/opt/homebrew/bin/lilypond]{lyluatex}
 \usepackage[autocompile]{gregoriotex}
 \usepackage{titlesec}
 \usepackage{fontspec}
@@ -15,7 +14,7 @@
 \usepackage{lettrine}
 \usepackage{etoolbox}
 \usepackage{marginalia}
-
+\marginaliasetup{pos=left, width=5mm, xsep=2mm, type=fixed}
 
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
@@ -93,7 +92,8 @@
 % Nepárne strany (Odd) -> vpravo (Right)
 % [Názov kapitoly] [medzera 2em] [Číslo]
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\fancyhead[RO]{\bfseries\textcolor{red}{\leftmark} \hspace{2em} \thepage}
+\fancyhead[RO]{\bfseries\textcolor{red}{\leftmark} \hspace{1em} \thepage}
+\setlength{\headheight}{24pt}
 
 % Nastavenie čiary
 \renewcommand{\headrulewidth}{0.4pt} % Hrúbka čiary pod hlavičkou
@@ -103,15 +103,13 @@
 \begin{document}
     \begin{titlepage}
         \begin{center}
-            \vspace*{\fill}
             \begin{huge}\textcolor{red}{\textbf{MISSA CHRISMATIS}}\end{huge}
             \\\textbf{OMŠA SVÄTENIA OLEJOV}
             \vspace*{0.5cm}
-            \\ \includegraphics[width=5cm]{./misachrismatis.jpg}
+            \\ \includegraphics[width=9cm]{./missa_chrismatis.png}
             \vspace*{0.5cm}
             \\ \textbf{Katedrála svätého Martina}
             \\ \textit{Spišská Kapitula - Spišské Podhradie}
-            \vspace*{\fill}
         \end{center}
 
     \end{titlepage}
@@ -124,7 +122,6 @@
     \\ \textbf{Spišská Kapitula — Spišské Podhradie}
     \\ \textbf{MMXXVI}
 \end{center}
-\vspace*{\fill}
 \newpage
 
 \chapter{Úvodné obrady a liturgia slova}
@@ -150,13 +147,19 @@
 \end{enumerate}
 
 \section*{Kyrie}
+\hfill{\small LS I 665}\par
 \lilypondfile{./Noty/kyrie.ly}
 
 \section*{Oslavná pieseň - glória}
+\hfill{\small LS I 658}\par
 \lilypondfile{./Noty/gloria.ly}
 
+\newpage
 \section*{Medzispev}
+\hfill{\small Katarina vl.}\par
 \lilypondfile{./Noty/zalm.ly}
+
+\hfill{\small gregoriánsky I. tónus}\par
 \lilypondfile{./Noty/aleluja.ly}
 
 \chapter{Obnovenie kňazských sľubov}
@@ -206,6 +209,7 @@ kňazov i ľud, privedie do večného života.}
 
 \chapter{Liturgia eucharistie}
 \section*{Hymnus}
+\hfill {\small gregoriánsky I. tónus}\par
 \lilypondfile{./Noty/vykupitel_prijmi.ly}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Plody stromu, k posväteniu živným slnkom zrodené, prináša ľud
@@ -230,8 +234,10 @@ kňazov i ľud, privedie do večného života.}
 \end{enumerate}
 
 \section*{Sanctus}
+\hfill{\small LS I 629}\par
 \lilypondfile{./Noty/sanctus.ly}
 
+\newpage
 \section*{
     \begin{center}
         Prvá eucharistická modlitba \\
@@ -240,8 +246,7 @@ kňazov i ľud, privedie do večného života.}
 }
 
 \annotation{Hlavný celebrant rozopne ruky a povie:}
-\marginalia[pos=left, style={\color{red}}]{Hl}
-\euch{\startletter{T}eba teda, najláskavejší Otče,
+\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{T}eba teda, najláskavejší Otče,
 \\pokorne vzývame a prosíme
 \\skrze Ježiša Krista,
 \\tvojho Syna a nášho Pána:}
@@ -263,9 +268,9 @@ kňazov i ľud, privedie do večného života.}
 \\Daruj svojej Cirkvi pokoj,
 \\chráň ju, zjednocuj a spravuj po celom svete.}
 
+
 \annotationcenter{Spomienka na živých}
-\marginalia{\textcolor{red}{1k}}
-\euch{\startletter{P}amätaj, Pane,
+\marginalia{\textcolor{red}{1k}}\euch{\startletter{P}amätaj, Pane,
 \\na svojich služobníkov a služobnice \textcolor{red}{M.} a \textcolor{red}{M.}}
 
 \annotation{Zopne ruky a chvíľu sa modlí za tých, ktorých si chce osobitne pripomenúť. Potom
@@ -377,7 +382,7 @@ znova ju položí na paténu a pokľaknutím adoruje}
 \\veď ty si nás vykúpil svojím krížom a zmŕtvychvstaním.
 
 \annotation{Potom všetci koncelebranti spolu s hlavným celebrantom s rozpätými rukami hovoria:}
-\\\marginalia[\textcolor{red}{Vš}]{}\euch{\startletter{P}reto, Pane, my, tvoji služobníci,
+\\\marginalia{\textcolor{red}{Vš}}\euch{\startletter{P}reto, Pane, my, tvoji služobníci,
 \\aj tvoj svätý ľud, slávime pamiatku
 \\požehnaného umučenia a zmŕtvychvstania
 \\i slávneho nanebovstúpenia Ježiša Krista,
@@ -435,7 +440,7 @@ osobitne pripomenúť.}
 
 \annotation{Pri slovách „Aj nás, svojich hriešnych služobníkov“ všetci konce-
 lebranti sa bijú v prsia.}
-\\\marginalia{\textcolor{red}{k2}}\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}
+\\\marginalia{\textcolor{red}{2k}}\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}
 \\\annotation{S rozopätými rukami pokračuje:}
 \\\euch{ktorí dúfame v tvoje prehojné milosrdenstvo,
 \\priveď do spoločenstva
@@ -500,6 +505,7 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 
 \chapter{Obrad prijímania}
 \section*{Lámanie chleba}
+\hfill {\small LS I 756}\par
 \lilypondfile{./Noty/agnus.ly}
 
 \section*{Spev na prijímanie - JKS 270}

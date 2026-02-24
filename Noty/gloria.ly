@@ -6,11 +6,6 @@ global = {
   \key c \major
 }
 
-\header {
-  composer = "LS I 658" % Toto sa zobrazí vpravo hore
-}
-
-
 
 melody = \relative c' {
   \global

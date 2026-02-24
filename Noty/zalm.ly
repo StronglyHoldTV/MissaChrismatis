@@ -6,10 +6,6 @@ global = {
   \key g \major
 }
 
-\header {
-  composer = "Katarina vl." % Toto sa zobrazí vpravo hore
-}
-
 melody = \relative c'' {
   \global
   \cadenzaOn

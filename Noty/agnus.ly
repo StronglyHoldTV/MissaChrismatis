@@ -6,10 +6,6 @@ global = {
   \key d \major
 }
 
-\header {
-  composer = "LS I 756" % Toto sa zobrazí vpravo hore
-}
-
 melody = \relative c' {
   \global
   \cadenzaOn

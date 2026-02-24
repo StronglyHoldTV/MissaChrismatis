@@ -6,10 +6,6 @@ global = {
   \key g \minor
 }
 
-\header {
-  %composer = "gregoriánsky I. tónus" % Toto sa zobrazí vpravo hore
-}
-
 melody = \relative c'' {
   \global
   \cadenzaOn

@@ -1,13 +1,7 @@
 \version "2.24.0"
 
-
-
 global = {
   \key f \major
-}
-
-\header {
-  composer = "LS I 665" % Toto sa zobrazí vpravo hore
 }
 
 melody = \relative c'' {
