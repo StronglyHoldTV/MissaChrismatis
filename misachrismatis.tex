@@ -14,7 +14,7 @@
 \usepackage{lettrine}
 \usepackage{etoolbox}
 \usepackage{marginalia}
-\marginaliasetup{pos=left, width=5mm, xsep=2mm, type=fixed}
+\marginaliasetup{pos=left, width=5mm, type=fixed}
 
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
@@ -27,37 +27,39 @@
     }
 
 \newcommand{\markup}[1]{%
-    \indent\normalsize\textcolor{red}{#1}%
+    \indent\large\textcolor{red}{#1}%
     }
 
 \newcommand{\psalmheading}[1]{%
     \begin{center}
-    \noindent\normalsize\textcolor{red}{#1}
+    \noindent\large\textcolor{red}{#1}
     \end{center}
     }
 
 \newcommand{\partheading}[1]{%
-    \noindent\normalsize\textcolor{red}{\textmd{\uppercase{#1}}}
+    \noindent\large\textcolor{red}{\textmd{\uppercase{#1}}}
 }
 
 \newcommand*{\annotation}[1]{
-    \noindent\small\textcolor{red}{#1}\normalsize
+    \noindent\small\textcolor{red}{#1}\large
+    \vspace{0.5em}
 }
 
 \newcommand*{\annotationcenter}[1]{
-    \noindent\normalsize\begin{center}\textcolor{red}{#1}\end{center}\normalsize
+    \noindent\large\begin{center}\textcolor{red}{#1}\end{center}\large
 }
 
 \newcommand*{\predsedajuci}[1]{
-    \noindent\textbf{#1}\normalsize
+    \noindent\textbf{#1}
+    \large
 }
 
 \newcommand*{\euch}[1]{
-    \noindent\large\textbf{#1}\normalsize
+    \noindent\Large\textbf{#1}\large
 }
 
 \newcommand*{\startletter}[1]{
-    \noindent\Large\textbf{\textcolor{red}{#1}}\large
+    \noindent\Large\textbf{\textcolor{red}{#1}}\Large
 }
 
 % usage: \uarc[sep][depth]{text}
@@ -77,8 +79,9 @@
 \titleformat{\section}
   {\color{red}\bfseries\MakeUppercase}{\thesection}{1em}{}
 
-\titleformat{\chapter}{\bfseries\filcenter\Large}{}{0pt}{\MakeUppercase}
+\titleformat{\chapter}{\bfseries\filcenter\LARGE}{}{0pt}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0em}{0.5em}
+\titlespacing*{\section}{0pt}{0em}{0.5em}
 \assignpagestyle{\chapter}{fancy}
 
 % Nastavenie štýlu strán
@@ -108,6 +111,7 @@
             \vspace*{0.5cm}
             \\ \includegraphics[width=9cm]{./missa_chrismatis.png}
             \vspace*{0.5cm}
+            \large
             \\ \textbf{Katedrála svätého Martina}
             \\ \textit{Spišská Kapitula - Spišské Podhradie}
         \end{center}
@@ -115,6 +119,8 @@
     \end{titlepage}
 
 \newpage
+\blankpage
+\large
 \textbf{Texty v tejto brožúre, prevzaté z oficiálnych liturgických kníh, sa zhodujú s pôvodinou a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišskom Podhradí.} 
 \vspace*{\fill}
 \begin{center}
@@ -123,10 +129,11 @@
     \\ \textbf{MMXXVI}
 \end{center}
 \newpage
-
 \chapter{Úvodné obrady a liturgia slova}
 \section*{Introit}
+\normalsize
 \lilypondfile{./Noty/vstupny_spev.ly}
+\large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     %Treba dolpniť podčiarknutia a zvýraznenia pre spev a tie kvačky pod slabikami...
     \item Mo\textbf{je} srdce prekypuje krásnymi slovami, \textcolor{red}{\textbf{\GreDagger}}\space svoje verše ve\textbf{nu}jem \underline{krá}ľo\textbf{vi.} \textbf{\textcolor{red}{\gresixstar}} Môj \textbf{ja}zyk je ako pero \textbf{rých}lo\uarc{pis}ca. \textbf{\textcolor{red}{— \Rbar}}
@@ -146,21 +153,22 @@
     \item Veríme ťa prítomného - vo Sviatosti Oltárnej, - Bohčloveka láskavého, - čo v pamiatke preslávnej - [:pod spôsobom vína, chleba - k požívaniu dávaš seba - nám, veriacim, Pane z neba, - z lásky k hriešnym nám zjavnej.:]
 \end{enumerate}
 
+\newpage
 \section*{Kyrie}
 \hfill{\small LS I 665}\par
-\lilypondfile{./Noty/kyrie.ly}
+{\normalsize \lilypondfile{./Noty/kyrie.ly}}
 
 \section*{Oslavná pieseň - glória}
 \hfill{\small LS I 658}\par
-\lilypondfile{./Noty/gloria.ly}
+{\normalsize \lilypondfile{./Noty/gloria.ly}}
 
 \newpage
 \section*{Medzispev}
 \hfill{\small Katarina vl.}\par
-\lilypondfile{./Noty/zalm.ly}
+{\normalsize \lilypondfile{./Noty/zalm.ly}}
 
 \hfill{\small gregoriánsky I. tónus}\par
-\lilypondfile{./Noty/aleluja.ly}
+{\normalsize \lilypondfile{./Noty/aleluja.ly}}
 
 \chapter{Obnovenie kňazských sľubov}
 \annotation{Odpovedajú len prítomní kňazi.}
@@ -210,7 +218,7 @@ kňazov i ľud, privedie do večného života.}
 \chapter{Liturgia eucharistie}
 \section*{Hymnus}
 \hfill {\small gregoriánsky I. tónus}\par
-\lilypondfile{./Noty/vykupitel_prijmi.ly}
+{\normalsize \lilypondfile{./Noty/vykupitel_prijmi.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Plody stromu, k posväteniu živným slnkom zrodené, prináša ľud
     zbožný tomu, čo dal svetu spasenie. \textbf{\textcolor{red}{— \Rbar}}
@@ -235,14 +243,13 @@ kňazov i ľud, privedie do večného života.}
 
 \section*{Sanctus}
 \hfill{\small LS I 629}\par
+\normalsize
 \lilypondfile{./Noty/sanctus.ly}
 
 \newpage
-\section*{
-    \begin{center}
-        Prvá eucharistická modlitba \\
-        (Rímsky kánon)
-    \end{center}
+{
+    \Large
+    \color{red}\bfseries\MakeUppercase{\centering Prvá eucharistická modlitba\par (Rímsky kánon)\par}
 }
 
 \annotation{Hlavný celebrant rozopne ruky a povie:}
@@ -338,10 +345,16 @@ ako si to vyžaduje ich povaha.}
 \\vzdával ti vďaky a dobrorečil, lámal chlieb
 \\a dával svojim učeníkom, hovoriac:}
 
-\annotation{Trocha sa skloní. (koncelebranti Pánové slová vyslovujú s pravicou vystretou smerom k chlebu, ak je to vhodné)}
-\\\euch{ \begin{center}VEZMITE A JEDZTE Z NEHO VŠETCI,
-\\LEBO TOTO JE MOJE TELO,
-\\KTORÉ SA OBETUJE ZA VÁS.\end{center}}
+\annotation{Trocha sa skloní. (koncelebranti Pánové slová vyslovujú s pravicou vystretou smerom k chlebu, 
+ak je to vhodné)}
+\\\euch{
+    \centering
+    VEZMITE A JEDZTE Z NEHO VŠETCI,\\
+    \centering
+    LEBO TOTO JE MOJE TELO,\\
+    \centering
+    KTORÉ SA OBETUJE ZA VÁS.\\
+}
 
 \annotation{Hlavný celebrant ukáže konsekrovanú hostiu ľudu,
 znova ju položí na paténu a pokľaknutím adoruje}
@@ -416,11 +429,11 @@ znova ju položí na paténu a pokľaknutím adoruje}
 \annotation{Zopnú ruky.}
 \\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
 
-\annotation{Spomienka na zosnulých}
-\annotation{Príhovory „Pamätaj, Pane“ za zomrelých a „Aj nás, svojich
-hriešnych služobníkov“ je vhodné zveriť jednému alebo dvom
-koncelebrantom a každý sám prednesie tieto modlitby s rozopätými
-rukami a zvýšeným hlasom.}
+\annotation{Spomienka na zosnulých}\\
+\annotation{
+Príhovory „Pamätaj, Pane“ za zomrelých a „Aj nás, svojich hriešnych služobníkov“ je vhodné zveriť jednému alebo dvom
+koncelebrantom a každý sám prednesie tieto modlitby s rozopätými rukami a zvýšeným hlasom.
+}
 \\\marginalia{\textcolor{red}{1k}}\euch{\startletter{P}amätaj, Pane,
 \\i na svojich služobníkov
 \\a služobnice \textcolor{red}{M.} a \textcolor{red}{M.},
@@ -438,8 +451,7 @@ osobitne pripomenúť.}
 \annotation{Zopnú ruky.}
 \\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
 
-\annotation{Pri slovách „Aj nás, svojich hriešnych služobníkov“ všetci konce-
-lebranti sa bijú v prsia.}
+\annotation{Pri slovách „Aj nás, svojich hriešnych služobníkov“ všetci koncelebranti sa bijú v prsia.}
 \\\marginalia{\textcolor{red}{2k}}\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}
 \\\annotation{S rozopätými rukami pokračuje:}
 \\\euch{ktorí dúfame v tvoje prehojné milosrdenstvo,
@@ -456,18 +468,15 @@ lebranti sa bijú v prsia.}
 \\\annotation{Zopne ruky.}
 \\\euch{Skrze nášho Pána Ježiša Krista.}
 
-\section*{
-    \begin{center}
-        POŽEHNANIE OLEJA NA POMAZANIE CHORÝCH
-    \end{center}
-}
-
+\newpage
+\section*{\hfill POŽEHNANIE OLEJA NA POMAZANIE CHORÝCH\hfill}
 \annotation{Skôr než biskup povie \textcolor{black}{„Skrze neho, ty, Bože“} v Prvej eucharistickej
 modlitbe alebo doxológiu v Tretej eucharistickej modlitbe, diakon alebo
 kňaz, donesie nádobu s olejom na pomazanie chorých k oltáru a drží ju
 pred biskupom.}
 \\\annotation{Biskup sa pri požehnaní oleja na pomazanie chorých modlí túto
 modlitbu:}
+\large
 \\\predsedajuci{Bože, Otče, ty potešuješ všetkých
 \\a chceš, aby chorí našli v tvojom Synovi útechu a zdravie.
 \\Pozri na našu vieru a vypočuj naše prosby:
@@ -506,9 +515,11 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \chapter{Obrad prijímania}
 \section*{Lámanie chleba}
 \hfill {\small LS I 756}\par
+\normalsize
 \lilypondfile{./Noty/agnus.ly}
 
 \section*{Spev na prijímanie - JKS 270}
+\large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Klaniam sa ti vrúcne, - Bože večitý, - pod spôsobom chleba - z lásky ukrytý! - [:Srdce moje tebe - sa len oddáva, - že si Pánom jeho - vďačne uznáva.:]
     \item Zrak môj i chuť chceli, - by ma oklamať, - ale sluch ma učí - pevnú vieru mať. - [:Verím, čo Syn Boží - ustanovil nám, - ten klamať nemôže, - kto je Pravda sám.:]
@@ -518,7 +529,9 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \end{enumerate}
 
 \section*{Ó, srdce kňaszké kristovo}
+\normalsize
 \lilypondfile{./Noty/osrdceknazske.ly}
+\large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Ó, Srdce kňazské Kristovo, daj svätých kňazov ľudu nášmu, nech
     vzplanie láskou ich slovo, nech stvorí v ľudstve dušu krásnu. Ó,
@@ -543,17 +556,14 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \textcolor{red}{Všetci:} Amen
 
 \chapter{POŽEHNANIE OLEJA KATECHUMENOV a posvätenie krizmy}
-\section*{
-    \begin{center}
-        POŽEHNANIE OLEJA KATECHUMENOV
-    \end{center}
-}
-
+\section*{\hfill POŽEHNANIE OLEJA KATECHUMENOV\hfill}
+\large
 \annotation{Po modlitbe po prijímaní zíde biskup s asistenciou k pripravenému
 stolu uprostred presbytéria. Všetci ostatní ostávajú na mieste. Biskup
 najprv požehná olej katechumenov.}
 \\\annotation{Biskup tvárou k ľudu a s rozopätými rukami sa modlí túto
 modlitbu:}
+\large
 \\\predsedajuci{Bože, opora a mocná ochrana svojho ľudu,
 \\ty si stvoril olej ako symbol sily;
 \\láskavo ho \textcolor{red}{\textbf{\grecross}} požehnaj
@@ -567,11 +577,7 @@ modlitbu:}
 
 \noindent \textcolor{red}{Všetci:} Amen.
 
-\section*{
-    \begin{center}
-        POSVÄTENIE KRIZMY
-    \end{center}
-}
+\section*{\hfill POSVÄTENIE KRIZMY\hfill}
 \annotation{Biskup vleje vonné látky do oleja, a tak pripraví krizmu, ak už
 predtým nebola pripravená. Keď to urobil, prednesie výzvu na
 modlitbu.}
