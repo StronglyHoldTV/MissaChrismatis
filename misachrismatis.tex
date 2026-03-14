@@ -13,6 +13,7 @@
 \usepackage[slovak]{babel}
 \usepackage{lettrine}
 \usepackage{etoolbox}
+\usepackage{ragged2e}
 \usepackage{marginalia}
 
 \marginaliasetup{
@@ -21,6 +22,8 @@
   xsep=0pt,
   yshift=0pt
 }
+
+\hyphenpenalty=10000
 
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
@@ -168,7 +171,7 @@ a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišs
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     %Treba dolpniť podčiarknutia a zvýraznenia pre spev a tie kvačky pod slabikami...
     \item Mo\textbf{je} srdce prekypuje krásnymi slovami, \textcolor{red}{\textbf{\GreDagger}}\space svoje verše ve\textbf{nu}jem \underline{krá}ľo\textbf{vi.} \textbf{\textcolor{red}{\gresixstar}} Môj \textbf{ja}zyk je ako pero \textbf{rých}lo\uarc{pis}ca. \textbf{\textcolor{red}{— \Rbar}}
-    \item Ty \textbf{si} najkrajší z ľudských synov. \textbf{\textcolor{red}{\GreDagger}}\space Z tvojich perí \textbf{ply}nie underline{mi}lo\textbf{ta.} \textbf{\textcolor{red}{\gresixstar}} Pre\textbf{to} ťa Boh po\textbf{žeh}nal \underline{na}veky. \textbf{\textcolor{red}{— \Rbar}}
+    \item Ty \textbf{si} najkrajší z ľudských synov. \textbf{\textcolor{red}{\GreDagger}}\space Z tvojich perí \textbf{ply}nie \underline{mi}lo\textbf{ta.} \textbf{\textcolor{red}{\gresixstar}} Pre\textbf{to} ťa Boh po\textbf{žeh}nal \underline{na}veky. \textbf{\textcolor{red}{— \Rbar}}
     \item Ty \textbf{naj}mocnejší, pripáš \textbf{si} meč \underline{na} bed\textbf{rá;} \textbf{\textcolor{red}{\gresixstar}} svo\textbf{ju} vele\textbf{bu} a \underline{dôs}tojnosť. \textbf{\textcolor{red}{— \Rbar}}
     \item Vo \textbf{svo}jej dôstojnosti šťastne vytiahni, nasadni na voz \textbf{\textcolor{red}{\GreDagger}}\space a bojuj zapravdu, lásku a \textbf{spra}vod\underline{li}\textbf{vosť.} \textbf{\textcolor{red}{\gresixstar}} Nech \textbf{ťa} tvoja pravica učí konať ú\textbf{žas}né \uarc{skut}ky. \textbf{\textcolor{red}{— \Rbar}}
     \item Tvo\textbf{je} ostré šípy \textbf{\textcolor{red}{\GreDagger}}\space zasiahnu srdcia kráľových \textbf{ne}pria\underline{te}\textbf{ľov;} \textbf{\textcolor{red}{\gresixstar}} pod\textbf{da}jú \textbf{sa} ti \underline{ná}rody. \textbf{\textcolor{red}{— \Rbar}}
@@ -766,16 +769,14 @@ oleje nesú určení posluhujúci hneď za krížom.}
 \end{enumerate}
 
 \newpage
-{
-\noindent
-\hyphenpenalty=10000
-\exhyphenpenalty=10000
+{\justifying
 Liturgické texty \textit{Omše svätenia olejov} boli doslovne prevzaté 
 z tretieho vydania \textit{Rímskeho misála} v slovenskom jazyku (KBS, Bratislava 2021), 
 \textit{Rímskeho pontifikála} v slovenskom jazyku (SSV Trnava 1981),
 tretieho vydania \textit{Lekcionára I} v slovenskom jazyku (SSV Trnava 2003) 
 a ďalších liturgických kníh a spevníkov na Slovensku.
 }
+
 \vfill
 \noindent Zostavil:\\
 Prof. ThDr. PhDr. Amantius Akimjak, PhD.,\\
@@ -797,5 +798,5 @@ Liturgická komisia Spišskej diecézy\\
 Schola Cantorum Kňazského seminára biskupa Jána Vojtaššáka
 \vfill
 \noindent Ústav sakrálneho umenia TI TF KU\\
-v Spišskej Kapitule v Spišskom Podhradí 2025
+v Spišskej Kapitule v Spišskom Podhradí 2026
 \end{document}
