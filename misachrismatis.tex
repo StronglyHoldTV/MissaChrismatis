@@ -1,9 +1,8 @@
-\documentclass[slovak,twoside]{book}
+\documentclass[slovak, twoside]{book}
 \usepackage{scripture}
 \usepackage[a5paper, outer=20mm, inner=20mm]{geometry}
 \usepackage{graphicx}
 \usepackage[program=lilypond]{lyluatex}
-%/opt/homebrew/bin/lilypond
 \usepackage[autocompile]{gregoriotex}
 \usepackage{titlesec}
 \usepackage{fontspec}
@@ -15,7 +14,13 @@
 \usepackage{lettrine}
 \usepackage{etoolbox}
 \usepackage{marginalia}
-\marginaliasetup{pos=left, width=5mm, type=fixed}
+
+\marginaliasetup{
+  pos=left, 
+  width=10mm,
+  xsep=0pt,
+  yshift=0pt
+}
 
 \makeatletter
 \patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
@@ -105,7 +110,7 @@
 
 \titleformat{\chapter}{\bfseries\filcenter\LARGE}{}{0pt}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0em}{0.5em}
-\titlespacing*{\section}{0pt}{0em}{0.5em}
+\titlespacing*{\section}{0pt}{0em}{0.3em}
 \assignpagestyle{\chapter}{fancy}
 
 % Nastavenie štýlu strán
@@ -145,7 +150,8 @@
 \newpage
 \blankpage
 \large
-\textbf{Texty v tejto brožúre, prevzaté z oficiálnych liturgických kníh, sa zhodujú s pôvodinou a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišskom Podhradí.} 
+\textbf{Texty v tejto brožúre, prevzaté z oficiálnych liturgických kníh, sa zhodujú s pôvodinou 
+a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišskom Podhradí.} 
 \vspace*{\fill}
 \begin{center}
     \textbf{Kňazský seminár biskupa Jána Vojtaššáka}
@@ -154,7 +160,7 @@
 \end{center}
 \newpage
 \chapter{Úvodné obrady a liturgia slova}
-\noindent\textcolor{red}{\textbf{FANFÁRY}}
+\noindent\textcolor{red}{\small (FANFÁRY)}
 \section*{Introit}
 \normalsize
 \lilypondfile{./Noty/vstupny_spev.ly}
@@ -172,7 +178,8 @@
 \end{enumerate}
 
 \noindent\textcolor{red}{\textbf{HYMNA JUBILEA}}
-\lilypondfile{./Noty/jub1.ly}
+\vspace{0.5em}
+{\normalsize \lilypondfile{./Noty/jub1.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Sláva ti, Bože, za Cirkev živú, ktorá v láske, jednote stojí,
     Duch Svätý dvíha nás, posilňuje, v srdciach verných oheň tvoj horí.
@@ -195,7 +202,7 @@
 \section*{Kyrie}
 \hfill{\small LS I 665}\par
 {\normalsize \lilypondfile{./Noty/kyrie.ly}}
-
+\vspace{0.5em}
 \section*{Oslavná pieseň - glória}
 \hfill{\small LS I 658}\par
 {\normalsize \lilypondfile{./Noty/gloria.ly}}
@@ -234,14 +241,16 @@ učiteľský úrad podľa príkladu Ježiša Krista, Hlavy a Pastie-
 ra, teda nie z túžby po hmotných výhodách, ale jedine
 z lásky k dušiam?}
 
+\annotation{Všetci kňazi:}
+\\Chcem.
+
 \annotation{Potom sa biskup obráti k ľudu a pokračuje.}
-\annotation{Odpovedajú spoločne všetci prítomní:}
+\\\annotation{Odpovedajú spoločne všetci prítomní:}
 
 \predsedajuci{A vy, milovaní bratia a sestry, modlite sa za svojich kňazov,
 nech ich Pán zahrnie svojimi darmi, aby vás ako verní
 služobníci Krista, najvyššieho kňaza, viedli k nemu,
 k prameňu spásy.}
-
 \annotation{Ľud:}
 \\Kriste, uslyš nás. Kriste, vyslyš nás.
 
@@ -278,8 +287,8 @@ kňazov i ľud, privedie do večného života.}
 
 \chapter{Liturgia eucharistie}
 
-\section*{Offertórium — Prijmi Pane}
-\noindent Prijmi, Pane, obetu, ktorú Ti tu skladám,
+\section*{Offertórium}
+Prijmi, Pane, obetu, ktorú Ti tu skladám,
 naše malé snaženia, ktorých veľkosť hľadám.
 Verím, Pane, že si tu, každý deň a všade,
 všetky naše tajomstvá, nech sú v Tvojej sláve.
@@ -305,8 +314,8 @@ Všetkých nás, máš nás rád, nech Ti spieva každý.
     \color{red}\bfseries\MakeUppercase{\centering Prvá eucharistická modlitba\par (Rímsky kánon)\par}
 }
 
-\annotation{Hlavný celebrant rozopne ruky a povie:}
-\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{T}eba teda, najláskavejší Otče,
+\annotation{Hlavný celebrant rozopne ruky a povie:}\\
+\noindent\euch{\startletter{T}eba teda, najláskavejší Otče, \marginalia{\textcolor{red}{Hl}}
 \\pokorne vzývame a prosíme
 \\skrze Ježiša Krista,
 \\tvojho Syna a nášho Pána:}
@@ -328,10 +337,9 @@ Všetkých nás, máš nás rád, nech Ti spieva každý.
 \\Daruj svojej Cirkvi pokoj,
 \\chráň ju, zjednocuj a spravuj po celom svete.}
 
-
 \annotationcenter{Spomienka na živých}
-\marginalia{\textcolor{red}{1k}}\euch{\startletter{P}amätaj, Pane,
-\\na svojich služobníkov a služobnice \textcolor{red}{M.} a \textcolor{red}{M.}}
+\hskip-0.2em\euch{\startletter{P}amätaj, Pane, \marginalia{\textcolor{red}{1k}}
+\\ na svojich služobníkov a služobnice \textcolor{red}{M.} a \textcolor{red}{M.}}
 
 \annotation{Zopne ruky a chvíľu sa modlí za tých, ktorých si chce osobitne pripomenúť. Potom
 s rozopätými rukami pokračuje:}
@@ -347,7 +355,7 @@ s rozopätými rukami pokračuje:}
 \\Bohu večnému, živému a pravému.}
 
 \annotationcenter{Spomienka na svätých}
-\marginalia{\textcolor{red}{2k}}\euch{\startletter{V} spoločenstve s oslávenou Cirkvou
+\hskip-0.2em\euch{\startletter{V} spoločenstve s oslávenou Cirkvou\marginalia{\textcolor{red}{2k}}
 \\s úctou si spomíname
 \\najmä na preblahoslavenú Máriu, vždy Pannu,
 \\Rodičku Boha a nášho Pána Ježiša Krista,
@@ -365,7 +373,7 @@ s rozopätými rukami pokračuje:}
 \\\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
 
 \annotation{Hlavný celebrant s rozopätými rukami pokračuje:}
-\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{P}ane, milostivo prijmi túto obetu,
+\\\euch{\startletter{P}ane, milostivo prijmi túto obetu,\marginalia{\textcolor{red}{Hl}}
 \\ktorú ti predkladáme my, tvoji služobníci,
 \\i celá tvoja rodina.
 \\Spravuj naše dni vo svojom pokoji,
@@ -376,7 +384,7 @@ s rozopätými rukami pokračuje:}
 \\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
 
 \annotation{Vystrie ruky nad obetné dary a povie (i všetci koncelebranti vystrú ruku a povedia):}
-\\\marginalia{\textcolor{red}{Vš}}\euch{Prosíme ťa, Bože,
+\\\euch{Prosíme ťa, Bože,\marginalia{\textcolor{red}{Vš}}
 \\láskavo urob túto obetu
 \\vo všetkom požehnanou, dokonalou,
 \\prijatou, duchovnou a ľúbeznou,
@@ -434,21 +442,21 @@ znova ju položí na paténu a pokľaknutím adoruje}
 \\\annotation{Koncelebranti pri pozdvihovaní pozrú na kalich a potom sa pri pokľaknutí hlavného celebranta hlboko uklonia.}
 
 \annotation{Potom hlavný celebrant povie:}
-\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{H}ľa, tajomstvo viery.}
+\\\euch{\startletter{H}ľa, tajomstvo viery.}\marginalia{\textcolor{red}{Hl}}
 \\\annotation{Ľud pokračuje zvolaním:}
 \\Smrť tvoju, Pane, zvestujeme
 \\a tvoje zmŕtvychvstanie vyznávame, kým neprídeš v sláve.
 \\\annotation{Alebo:}
-\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{V}yznajme tajomstvo viery.}
+\\\euch{\startletter{V}yznajme tajomstvo viery.}\marginalia{\textcolor{red}{Hl}}
 \\Pane, keď jeme tento chlieb a pijeme z tohto kalicha,
 \\zvestujeme tvoju smrť, kým neprídeš v sláve.
 \\\annotation{Alebo:}
-\\\marginalia{\textcolor{red}{Hl}}\euch{\startletter{V}eľké je tajomstvo viery.}
+\\\euch{\startletter{V}eľké je tajomstvo viery.}\marginalia{\textcolor{red}{Hl}}
 \\Spasiteľ sveta, zachráň nás,
 \\veď ty si nás vykúpil svojím krížom a zmŕtvychvstaním.
 
 \annotation{Potom všetci koncelebranti spolu s hlavným celebrantom s rozpätými rukami hovoria:}
-\\\marginalia{\textcolor{red}{Vš}}\euch{\startletter{P}reto, Pane, my, tvoji služobníci,
+\\\euch{\startletter{P}reto, Pane, my, tvoji služobníci,\marginalia{\textcolor{red}{Vš}}
 \\aj tvoj svätý ľud, slávime pamiatku
 \\požehnaného umučenia a zmŕtvychvstania
 \\i slávneho nanebovstúpenia Ježiša Krista,
@@ -487,7 +495,7 @@ znova ju položí na paténu a pokľaknutím adoruje}
 Príhovory „Pamätaj, Pane“ za zomrelých a „Aj nás, svojich hriešnych služobníkov“ je vhodné zveriť jednému alebo dvom
 koncelebrantom a každý sám prednesie tieto modlitby s rozopätými rukami a zvýšeným hlasom.
 }
-\\\marginalia{\textcolor{red}{1k}}\euch{\startletter{P}amätaj, Pane,
+\\\euch{\startletter{P}amätaj, Pane,\marginalia{\textcolor{red}{1k}}
 \\i na svojich služobníkov
 \\a služobnice \textcolor{red}{M.} a \textcolor{red}{M.},
 \\ktorí nás predišli do večnosti
@@ -505,7 +513,7 @@ osobitne pripomenúť.}
 \\\euch{\textcolor{red}{(}Skrze Krista, nášho Pána. Amen.\textcolor{red}{)}}
 
 \annotation{Pri slovách „Aj nás, svojich hriešnych služobníkov“ všetci koncelebranti sa bijú v prsia.}
-\\\marginalia{\textcolor{red}{2k}}\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}
+\\\euch{\startletter{A}j nás, svojich hriešnych služobníkov,}\marginalia{\textcolor{red}{2k}}
 \\\annotation{S rozopätými rukami pokračuje:}
 \\\euch{ktorí dúfame v tvoje prehojné milosrdenstvo,
 \\priveď do spoločenstva
@@ -551,9 +559,9 @@ modlitbu:}
 požehnanie koná mimo eucharistickej modlitby.}
 \\\annotation{Po požehnaní oleja sa nádoba s olejom na pomazanie chorých
 položí na pôvodné miesto a v omši sa pokračuje ako zvyčajne, až do
-prijímania vrátane.Po požehnaní oleja hovorí sám hlavný celebrant:}
+prijímania vrátane. Po požehnaní oleja hovorí sám hlavný celebrant:}
 
-\marginalia{\textcolor{red}{Hl}}\euch{\startletter{S}krze neho ty, Pane,
+\euch{\startletter{S}krze neho ty, Pane,\marginalia{\textcolor{red}{Hl}}
 \\všetky tieto dary stále tvoríš,
 \\posväcuješ, oživuješ, požehnávaš a nám dávaš.}
 
@@ -568,11 +576,10 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \chapter{Obrad prijímania}
 \section*{Lámanie chleba}
 \hfill {\small LS I 756}\par
-\normalsize
-\lilypondfile{./Noty/agnus.ly}
-
-\section*{Spev na prijímanie - Ave verum corpus natum}
-\gregorioscore{./Noty/ave_verum.gabc}
+{\normalsize \lilypondfile{./Noty/agnus.ly}}
+\vspace{0.5em}
+\section*{Spev na prijímanie}
+{\normalsize \gregorioscore{./Noty/ave_verum.gabc}}
 
 \section*{JKS 267}
 \large
@@ -582,19 +589,6 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
     \item Daruj nám milosti, - ó, Bože, v štedrosti, - ktorý si chránieval - a mannou kŕmieval - oddaný ľud svoj v pravý čas, - napájaj krvou svojou nás: - [:ó, Bože milostivý:]
     \item A v smrti hodine - obdar nás, prosíme, - vierou i dúfaním - a pravým pokáním, - by sme tu prijali teba, - po smrti prišli do neba, - [:naveky chváliť teba.:]
     \item Zletujte, anjeli, - a všetci veselí - s nami sa spojujte, - Presvätý! spievajte. - Zdrav’ buď tu, Kriste, v sviatosti - prítomný, Bože z výsosti, - [:v spôsobe chleba, vína.:]
-\end{enumerate}
-
-\section*{ANTIFÓNA NA JUBILEUM}
-\lilypondfile{./Noty/jub2.ly}
-\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
-    \item \uarc{Boh} vstá\udown{va} a jeho \uup{ne}priate\udown{lia} sa \uepi{tra}tia, \textbf{\textcolor{red}{\GreDagger}}\space spred jeho tváre utekajú \uup{tí,} čo ho \udown{ne}ná\uepi{vi}dia. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{A}le \udown{spra}vodliví sa môžu tešiť a \uup{ja}sať pred \udown{Bo}žou tvárou \textbf{\textcolor{red}{\GreDagger}}\space a \uup{v ra}dos\udown{ti} sa \uepi{ve}seliť. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{Pá}na \uup{v je}\uarc{ho} \uepi{svä}tyni, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{na} jeho vzne\udown{še}nej \uepi{ob}lohe. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{ho} \uup{za} jeho \udown{či}ny \uepi{mo}hutné, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{za} jeho nes\udown{mier}nu \uepi{ve}lebnosť. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{ho} \uup{zvu}\uarc{kom} \uepi{poľ}nice, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{har}\udown{fou} a \uepi{ci}tarou. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{ho} \uup{bub}\udown{nom} a \uepi{tan}com, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{lý}\udown{rou} a \uepi{fla}utou. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{ho} ľubozvučnými cimbalmi, \uup{chváľ}te ho jasa\udown{vý}mi \uepi{cim}balmi; \textbf{\textcolor{red}{\GreDagger}}\space všetko, čo dýcha, \uup{nech} \udown{chvá}li \uepi{Pá}na. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Slá}va \udown{Ot}cu i Synu \uup{i} \udown{Du}chu \uepi{Svä}tému. \textbf{\textcolor{red}{\GreDagger}}\space Ako bolo na počiatku, tak nech je i teraz i vždycky \uup{i} na veky \udown{ve}kov. \uepi{A}men. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
 
 \section*{Ó, srdce kňaszké kristovo}
@@ -612,7 +606,18 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
     sa hriešnymi, hľa, každý tebe dá slovo: Viac už viac nebudeme
     zlými. Ó, Srdce Krista atď.
 \end{enumerate}
-
+\section*{ANTIFÓNA NA JUBILEUM}
+{\normalsize \lilypondfile{./Noty/jub2.ly}}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item \uarc{Boh} vstá\udown{va} a jeho \uup{ne}priate\udown{lia} sa \uepi{tra}tia, \textbf{\textcolor{red}{\GreDagger}}\space spred jeho tváre utekajú \uup{tí,} čo ho \udown{ne}ná\uepi{vi}dia. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{A}le \udown{spra}vodliví sa môžu tešiť a \uup{ja}sať pred \udown{Bo}žou tvárou \textbf{\textcolor{red}{\GreDagger}}\space a \uup{v ra}dos\udown{ti} sa \uepi{ve}seliť. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{Pá}na \uup{v je}\uarc{ho} \uepi{svä}tyni, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{na} jeho vzne\udown{še}nej \uepi{ob}lohe. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{za} jeho \udown{či}ny \uepi{mo}hutné, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{za} jeho nes\udown{mier}nu \uepi{ve}lebnosť. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{zvu}\uarc{kom} \uepi{poľ}nice, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{har}\udown{fou} a \uepi{ci}tarou. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{bub}\udown{nom} a \uepi{tan}com, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{lý}\udown{rou} a \uepi{fla}utou. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} ľubozvučnými cimbalmi, \uup{chváľ}te ho jasa\udown{vý}mi \uepi{cim}balmi; \textbf{\textcolor{red}{\GreDagger}}\space všetko, čo dýcha, \uup{nech} \udown{chvá}li \uepi{Pá}na. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Slá}va \udown{Ot}cu i Synu \uup{i} \udown{Du}chu \uepi{Svä}tému. \textbf{\textcolor{red}{\GreDagger}}\space Ako bolo na počiatku, tak nech je i teraz i vždycky \uup{i} na veky \udown{ve}kov. \uepi{A}men. \textbf{\textcolor{red}{— \Rbar}}
+\end{enumerate}
 \section*{Po prijímaní}
 
 \predsedajuci{Všemohúci Bože,
@@ -624,13 +629,13 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 
 \textcolor{red}{Všetci:} Amen
 
-\chapter{POŽEHNANIE OLEJA KATECHUMENOV a posvätenie krizmy}
+\chapter{Požehnanie oleja katechumenov a posvätenie krizmy}
 \section*{\hfill POŽEHNANIE OLEJA KATECHUMENOV\hfill}
 \large
 \annotation{Po modlitbe po prijímaní zíde biskup s asistenciou k pripravenému
 stolu uprostred presbytéria. Všetci ostatní ostávajú na mieste. Biskup
 najprv požehná olej katechumenov.}
-\\\annotation{Biskup tvárou k ľudu a s rozopätými rukami sa modlí túto
+\annotation{Biskup tvárou k ľudu a s rozopätými rukami sa modlí túto
 modlitbu:}
 \large
 \\\predsedajuci{Bože, opora a mocná ochrana svojho ľudu,
@@ -718,29 +723,7 @@ vystretú až do konca modlitby:}
 
 \noindent\textcolor{red}{Všetci:} Amen.
 
-\annotation{Po posvätení krizmy sa biskup vráti ku katedre a môže kňazom
-odovzdať oleje takto alebo podobne:}
-
-\textbf{Milovaní bratia,}
-
-\textbf{Kristus, Učiteľ, Kňaz a Pastier nás povolal k sviatostnému
-kňazstvu. V tomto eucharistickom slávení sme obnovili sľub,
-že budeme žiť čoraz dôstojnejšie zodpovedne povolaniu, ktoré
-sme prijali. Posvätili sme krizmu, požehnali olej katechume-
-nov a olej chorých, aby sme zvýraznili tajomstvo Cirkvi ako
-sviatosti Krista, ktorá posväcuje každú realitu a situáciu nášho
-života.}
-
-\textbf{Vám, kňazi, sa zverujú tieto oleje, aby vašou službou prúdila
-v dušiach Božia milosť, prostriedok sily a života. Vážte si, ctite
-a s osobitnou starostlivosťou uchovávajte tieto oleje, znaky
-Božej milosti. Osoby, miesta a veci, ktoré budú nimi poznače-
-né, môžu žiariť tou istou Božou svätosťou, ktorou obdivuhod-
-ným darom svojej lásky chcel, aby sa vo sviatostných znakoch
-mysticky obnovili udalosti dejín spásy.}
-\\\annotation{Nakoniec môže ešte ľudu povedať niekoľko slov, po ktorých
-zakončí slávenie záverečným požehnaním.}
-\\\annotation{Po záverečnom požehnaní na konci omše vloží biskup tymian do
+\annotation{Po záverečnom požehnaní na konci omše vloží biskup tymian do
 kadidelnice. Chór a ľud zatiaľ spieva pápežskú hymnu \textcolor{black}{\textit{V sedembrežnom kruhu
 Ríma}}. Po skončení spevu asistujúci odídu v sprievode do sakristie. Posvätné
 oleje nesú určení posluhujúci hneď za krížom.}
@@ -752,7 +735,8 @@ oleje nesú určení posluhujúci hneď za krížom.}
     námestníka Kristovho!:]
 \end{enumerate}
 
-\noindent\textcolor{red}{\textbf{FANFÁRY}}
+\noindent\textcolor{red}{\small (FANFÁRY)}
+
 \noindent\textcolor{red}{\textbf{JKS 394}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Ó, Mária bolestivá, - naša ochrana, - slovenský náš národ volá: - Pros
@@ -774,11 +758,44 @@ oleje nesú určení posluhujúci hneď za krížom.}
 
 \noindent\textcolor{red}{\textbf{JKS 503}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
-    \item Lásky svätej ohnisko, Srdce Boha Kráľa, z oltára sa našich sŕdc vznáša k tebe chvála! [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
-    \item Božské Srdce, tvoji sme v zasvätenia sľube, zasvätení budeme v tvojej žiť úľube. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
-    \item Z trónu tvojej dobroty v náš dom zlietla láska, v našom srdci vládnuť chce, láskou milosť božská. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
-    \item V pokušení ochrana, Srdce večnej sily. posilni nás, aby sme v boji zvíťazili! [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
-    \item Útočište hriešnikov, Srdce zmilovania, k tebe duša túli sa v bôľny deň skonania. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
+    \item Lásky svätej ohnisko, - Srdce Boha Kráľa, - z oltára sa našich sŕdc - vznáša k tebe chvála! [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
+    \item Božské Srdce, tvoji sme - v zasvätenia sľube, - zasvätení budeme - v tvojej žiť úľube. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
+    \item Z trónu tvojej dobroty - v náš dom zlietla láska, - v našom srdci vládnuť chce, - láskou milosť božská. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
+    \item V pokušení ochrana, - Srdce večnej sily. - Posilni nás, aby sme - v boji zvíťazili! [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
+    \item Útočište hriešnikov, - Srdce zmilovania, - k tebe duša túli sa - v bôľny deň skonania. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
 \end{enumerate}
 
+\newpage
+{
+\noindent
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+Liturgické texty \textit{Omše svätenia olejov} boli doslovne prevzaté 
+z tretieho vydania \textit{Rímskeho misála} v slovenskom jazyku (KBS, Bratislava 2021), 
+\textit{Rímskeho pontifikála} v slovenskom jazyku (SSV Trnava 1981),
+tretieho vydania \textit{Lekcionára I} v slovenskom jazyku (SSV Trnava 2003) 
+a ďalších liturgických kníh a spevníkov na Slovensku.
+}
+\vfill
+\noindent Zostavil:\\
+Prof. ThDr. PhDr. Amantius Akimjak, PhD.,\\
+člen LK KBS a LK Spišskej diecézy
+\vfill
+\noindent Recenzoval:\\
+SLDr. Lukáš Fejerčák, PhD.,\\
+Biskupský ceromoniár, tajomník diecézneho biskupa
+\vfill
+\noindent Sadzba:\\
+Marek Villim\\
+Ing. Jozef Pazúrik
+\vfill
+\noindent Pre vnútornú potrebu\\
+Katedrály sv. Martina v Spišskej Kapitule
+\vfill
+\noindent Vydala:\\
+Liturgická komisia Spišskej diecézy\\
+Schola Cantorum Kňazského seminára biskupa Jána Vojtaššáka
+\vfill
+\noindent Ústav sakrálneho umenia TI TF KU\\
+v Spišskej Kapitule v Spišskom Podhradí 2025
 \end{document}
