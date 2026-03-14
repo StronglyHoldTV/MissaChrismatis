@@ -2,7 +2,8 @@
 \usepackage{scripture}
 \usepackage[a5paper, outer=20mm, inner=20mm]{geometry}
 \usepackage{graphicx}
-\usepackage[program=/opt/homebrew/bin/lilypond]{lyluatex}
+\usepackage[program=lilypond]{lyluatex}
+%/opt/homebrew/bin/lilypond
 \usepackage[autocompile]{gregoriotex}
 \usepackage{titlesec}
 \usepackage{fontspec}
@@ -70,6 +71,29 @@
     }%
 }
 
+\NewDocumentCommand\uup{O{.6ex} O{.5ex} m}{%
+    \tikz[baseline=(node.base)]{
+        \node [inner sep=0pt, outer sep=0pt, anchor=base] (node) {#3};
+        \draw [transform canvas={yshift=-#1}] (node.base west) -- ([yshift=#2]node.base east);
+    }%
+}
+
+% 3. Klesanie (udown)
+\NewDocumentCommand\udown{O{.6ex} O{.5ex} m}{%
+    \tikz[baseline=(node.base)]{
+        \node [inner sep=0pt, outer sep=0pt, anchor=base] (node) {#3};
+        \draw [transform canvas={yshift=-#1}] ([yshift=#2]node.base west) -- (node.base east);
+    }%
+}
+
+% 3. Episéma (hrubá vodorovná čiarka)
+\NewDocumentCommand\uepi{O{.2ex} O{1.5pt} m}{%
+    \tikz[baseline=(epi node.base)]{
+        \node [inner sep=0pt, outer sep=0pt] (epi node) {#3};
+        \draw [line width=#2, transform canvas={yshift=-#1}] (epi node.south west) -- (epi node.south east);
+    }%
+}
+
 \scripturesetup{poetry/leftmargin=0pt}
 \setlength\parindent{1em}
 \setlength{\parskip}{0.5em} 
@@ -130,6 +154,7 @@
 \end{center}
 \newpage
 \chapter{Úvodné obrady a liturgia slova}
+\noindent\textcolor{red}{\textbf{FANFÁRY}}
 \section*{Introit}
 \normalsize
 \lilypondfile{./Noty/vstupny_spev.ly}
@@ -144,6 +169,19 @@
     \item Tvoj \textbf{trón,} Bože, \textbf{tr}vá \underline{na}ve\textbf{ky} \textbf{\textcolor{red}{\gresixstar}} a \textbf{žez}lo tvojho kráľovstva je žezlo \textbf{spra}\-vod\underline{li}vosti. \textbf{\textcolor{red}{— \Rbar}}
     \item Mi\textbf{lu}ješ spravodlivosť a nenávidíš neprávosť, \textbf{\textcolor{red}{\GreDagger}}\space preto ťa Boh, tvoj Boh, pomazal o\textbf{le}jom \underline{ra}do\textbf{sti} \textbf{\textcolor{red}{\gresixstar}} viac \textbf{a}ko \textbf{tvo}jich \uarc{dru}hov. \textbf{\textcolor{red}{— \Rbar}}
     \item Tvoj \textbf{o}dev vonia myrhou, alo\textbf{ou} a \underline{ka}si\textbf{ou} \textbf{\textcolor{red}{\gresixstar}} a \textbf{roz}veseľuje ťa zvuk harfy z palácov zo \textbf{slo}no\uarc{vi}ny. \textbf{\textcolor{red}{— \Rbar}}
+\end{enumerate}
+
+\noindent\textcolor{red}{\textbf{HYMNA JUBILEA}}
+\lilypondfile{./Noty/jub1.ly}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Sláva ti, Bože, za Cirkev živú, ktorá v láske, jednote stojí,
+    Duch Svätý dvíha nás, posilňuje, v srdciach verných oheň tvoj horí.
+    \item Hlas tvojho slova v našej zemi znie, vďaka svedkom viery stále žije v nás,
+    vo svetle ich krokov verne kráčame, tvoje dielo rastie v každom z nás.
+    \item Ako svätý Martin, pastier pokorný, každý teba nech zviditeľniť vie,
+    plášťom milosrdenstva odievať mnohých, to je cesta, v ktorej Cirkev zrie.
+    \item Túžime šíriť svetlo nádeje, v tmách sveta aj dnes lásku tvoju niesť,
+    nech domom pokoja tvoja Cirkev je, znakom viery pre celý svet. 
 \end{enumerate}
 
 \noindent\textcolor{red}{\textbf{JKS 244}}
@@ -190,6 +228,12 @@ vzali na seba v deň svojej kňazskej vysviacky?}
 \annotation{Všetci kňazi:}
 \\Chcem.
 
+\predsedajuci{Chcete v Eucharistii i v ostatných liturgických úkonoch
+verne vysluhovať Božie tajomstvá a vykonávať posvätný
+učiteľský úrad podľa príkladu Ježiša Krista, Hlavy a Pastie-
+ra, teda nie z túžby po hmotných výhodách, ale jedine
+z lásky k dušiam?}
+
 \annotation{Potom sa biskup obráti k ľudu a pokračuje.}
 \annotation{Odpovedajú spoločne všetci prítomní:}
 
@@ -215,9 +259,7 @@ kňazov i ľud, privedie do večného života.}
 \annotation{Všetci:}
 \\Amen.
 
-\chapter{Liturgia eucharistie}
 \section*{Hymnus}
-\hfill {\small gregoriánsky I. tónus}\par
 {\normalsize \lilypondfile{./Noty/vykupitel_prijmi.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Plody stromu, k posväteniu živným slnkom zrodené, prináša ľud
@@ -234,7 +276,18 @@ kňazov i ľud, privedie do večného života.}
     chvále, ktorú neumlčí čas. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
 
-\section*{Offertórium - JKS 244/4}
+\chapter{Liturgia eucharistie}
+
+\section*{Offertórium — Prijmi Pane}
+\noindent Prijmi, Pane, obetu, ktorú Ti tu skladám,
+naše malé snaženia, ktorých veľkosť hľadám.
+Verím, Pane, že si tu, každý deň a všade,
+všetky naše tajomstvá, nech sú v Tvojej sláve.
+
+\noindent Všetkým nám, dal si dar, zákon svojej lásky.
+Všetkých nás, máš nás rád, nech Ti spieva každý.
+
+\section*{JKS 244/4}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \setcounter{enumi}{3}
     \item Oltár je, hľa, tvoj stôl svätý, - kde ti obetuje kňaz - chleba, vína dve podstaty, - jak si nám to kázal raz; - [:obeť veľkej velebnosti - ruší dávne pamätnosti, - pred tvár tvojej láskavosti - slávnostne pristupuje.:]
@@ -510,7 +563,7 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 
 \gregorioscore{./Noty/peripsum.gabc}
 \annotation{Všetci:}
-\\Amen.
+\\Amen (6x).
 
 \chapter{Obrad prijímania}
 \section*{Lámanie chleba}
@@ -518,14 +571,30 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \normalsize
 \lilypondfile{./Noty/agnus.ly}
 
-\section*{Spev na prijímanie - JKS 270}
+\section*{Spev na prijímanie - Ave verum corpus natum}
+\gregorioscore{./Noty/ave_verum.gabc}
+
+\section*{JKS 267}
 \large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
-    \item Klaniam sa ti vrúcne, - Bože večitý, - pod spôsobom chleba - z lásky ukrytý! - [:Srdce moje tebe - sa len oddáva, - že si Pánom jeho - vďačne uznáva.:]
-    \item Zrak môj i chuť chceli, - by ma oklamať, - ale sluch ma učí - pevnú vieru mať. - [:Verím, čo Syn Boží - ustanovil nám, - ten klamať nemôže, - kto je Pravda sám.:]
-    \item Na kríži sa skrylo - samo božstvo len, - tu i človečenstvo - skryté zbožňujem. - [:V oboje ja verím, - Bože vznešený, - a prosím, čo prosil - lotor skrúšený.:]
-    \item Ó, pamiatka smrti - Krista Ježiša, - chlieb náš živý, sladkosť - sveta najvyššia, - [:daj, nech duch môj vždy len - tebou sa živí, - po sladkosti tvojej - vždy je dychtivý.:]
-    \item Ó, Baránku Boží, - Kriste, Pane môj, - v neskonalej láske - dnes sa so mnou spoj. - [:Tvojej krvi stačí - kvapka jediná, - aby z všehomíra zmyla sa vina.:]
+    \item Hostiu vítajme, - tej manne česť dajme, - zástupov Pánovi - a kráľov Kráľovi. - Zdrav’ buď, ó, anjelský chlebe, - voláme vrúcne ku tebe, - [:predrahé telo a krv.:]
+    \item Národ náš posilňuj, - vlasť našu ochraňuj, - ku blahu všetkých nás - zošli nám pravdy jas. - Chráň nás vždy od nepriateľov, - pokoja nežičiteľov - [:Ježiša telo a krv.:]
+    \item Daruj nám milosti, - ó, Bože, v štedrosti, - ktorý si chránieval - a mannou kŕmieval - oddaný ľud svoj v pravý čas, - napájaj krvou svojou nás: - [:ó, Bože milostivý:]
+    \item A v smrti hodine - obdar nás, prosíme, - vierou i dúfaním - a pravým pokáním, - by sme tu prijali teba, - po smrti prišli do neba, - [:naveky chváliť teba.:]
+    \item Zletujte, anjeli, - a všetci veselí - s nami sa spojujte, - Presvätý! spievajte. - Zdrav’ buď tu, Kriste, v sviatosti - prítomný, Bože z výsosti, - [:v spôsobe chleba, vína.:]
+\end{enumerate}
+
+\section*{ANTIFÓNA NA JUBILEUM}
+\lilypondfile{./Noty/jub2.ly}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item \uarc{Boh} vstá\udown{va} a jeho \uup{ne}priate\udown{lia} sa \uepi{tra}tia, \textbf{\textcolor{red}{\GreDagger}}\space spred jeho tváre utekajú \uup{tí,} čo ho \udown{ne}ná\uepi{vi}dia. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{A}le \udown{spra}vodliví sa môžu tešiť a \uup{ja}sať pred \udown{Bo}žou tvárou \textbf{\textcolor{red}{\GreDagger}}\space a \uup{v ra}dos\udown{ti} sa \uepi{ve}seliť. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{Pá}na \uup{v je}\uarc{ho} \uepi{svä}tyni, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{na} jeho vzne\udown{še}nej \uepi{ob}lohe. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{za} jeho \udown{či}ny \uepi{mo}hutné, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{za} jeho nes\udown{mier}nu \uepi{ve}lebnosť. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{zvu}\uarc{kom} \uepi{poľ}nice, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{har}\udown{fou} a \uepi{ci}tarou. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} \uup{bub}\udown{nom} a \uepi{tan}com, \textbf{\textcolor{red}{\GreDagger}}\space chváľte ho \uup{lý}\udown{rou} a \uepi{fla}utou. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Chváľ}te \udown{ho} ľubozvučnými cimbalmi, \uup{chváľ}te ho jasa\udown{vý}mi \uepi{cim}balmi; \textbf{\textcolor{red}{\GreDagger}}\space všetko, čo dýcha, \uup{nech} \udown{chvá}li \uepi{Pá}na. \textbf{\textcolor{red}{— \Rbar}}
+    \item \uarc{Slá}va \udown{Ot}cu i Synu \uup{i} \udown{Du}chu \uepi{Svä}tému. \textbf{\textcolor{red}{\GreDagger}}\space Ako bolo na počiatku, tak nech je i teraz i vždycky \uup{i} na veky \udown{ve}kov. \uepi{A}men. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
 
 \section*{Ó, srdce kňaszké kristovo}
@@ -649,26 +718,6 @@ vystretú až do konca modlitby:}
 
 \noindent\textcolor{red}{Všetci:} Amen.
 
-\annotation{Všetci koncelebranti vystrú pravú ruku ku krizme a mlčky ju držia
-vystretú až do konca modlitby:}
-\\\predsedajuci{Preto ťa, Pane, prosíme,
-\\nech je nám zmes týchto voňavých látok a oleja
-\\znakom tvojho svätého požehnania \textcolor{red}{\grecross} a tvojej milosti;
-\\našim bratom a sestrám,
-\\ktorí budú poznačení týmto pomazaním,
-\\uštedri dary Ducha Svätého;
-\\miesta a predmety,
-\\ktoré budú poznačené svätým olejom,
-\\ozdob žiarou posvätnosti.
-\\A tajomná sila tohto pomazania
-\\nech pôsobí najmä na rozkvet tvojej Cirkvi,
-\\aby dospela do plnosti,
-\\kým ty, ktorý sa skvieš večným svetlom,
-\\nebudeš všetko vo všetkých s Kristom v Duchu Svätom
-\\po všetky veky vekov.}
-
-\noindent \textcolor{red}{Všetci:} Amen.
-
 \annotation{Po posvätení krizmy sa biskup vráti ku katedre a môže kňazom
 odovzdať oleje takto alebo podobne:}
 
@@ -703,6 +752,7 @@ oleje nesú určení posluhujúci hneď za krížom.}
     námestníka Kristovho!:]
 \end{enumerate}
 
+\noindent\textcolor{red}{\textbf{FANFÁRY}}
 \noindent\textcolor{red}{\textbf{JKS 394}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Ó, Mária bolestivá, - naša ochrana, - slovenský náš národ volá: - Pros
@@ -720,6 +770,15 @@ oleje nesú určení posluhujúci hneď za krížom.}
     \item Tebe sa tu oddávame, - Matka, pomôž nám, - by sme i my i potomci -
     vyhli vždy vojnám. - [:Ty si Mať dobrotivá, - Patrónka ľútostivá, - oroduj
     vždy za náš národ - u svojho Syna.:]
+\end{enumerate}
+
+\noindent\textcolor{red}{\textbf{JKS 503}}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Lásky svätej ohnisko, Srdce Boha Kráľa, z oltára sa našich sŕdc vznáša k tebe chvála! [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
+    \item Božské Srdce, tvoji sme v zasvätenia sľube, zasvätení budeme v tvojej žiť úľube. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
+    \item Z trónu tvojej dobroty v náš dom zlietla láska, v našom srdci vládnuť chce, láskou milosť božská. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
+    \item V pokušení ochrana, Srdce večnej sily. posilni nás, aby sme v boji zvíťazili! [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
+    \item Útočište hriešnikov, Srdce zmilovania, k tebe duša túli sa v bôľny deň skonania. [:Božské Srdce, buď s nami, kraľuj, panuj nad nami, nech sa v našej rodine život viery rozvinie.:]
 \end{enumerate}
 
 \end{document}
