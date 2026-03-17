@@ -16,8 +16,8 @@ melody = \relative c' {
   g4 g4 g8[fis8 e8 d8]
   e2. e8[e8]
   \bar "||" \key f \major
-  f4 f4 g8[d8 e8 a8]
-  f2. g8[a8]
+  f4 f4 g8[f8 g8 c8]
+  a2. g8[a8]
   bes4 c4 bes8[a8 g8 f8]
   f1 \bar "|."
 
