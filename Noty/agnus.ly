@@ -10,10 +10,10 @@ melody = \relative c' {
   \global
   \cadenzaOn
   \repeat volta 3{
-    fis8 fis4 g8 b8[(a8)] a4. a8 \bar "|" a8[g8] fis8[g8] fis8 e4. \bar "|"
+    ^\markup \italic \with-color "red" "Spevák"fis8 fis4 g8 b8[(a8)] a4. a8 \bar "|" a8[g8] fis8[g8] fis8 e4. \bar "|"
     \alternative {
-      \volta 1,2 { d8[ d8 e8] g8[g8] fis4. }
-      \volta 3 { d8[d8] e4 fis8 fis4. } \bar "|."
+      \volta 1,2 { ^\markup \italic \with-color "red" "Všetci"d8[ d8 e8] g8[g8] fis4. }
+      \volta 3 { ^\markup \italic \with-color "red" "Všetci"d8[d8] e4 fis8 fis4. } \bar "|."
     }
   }
 }

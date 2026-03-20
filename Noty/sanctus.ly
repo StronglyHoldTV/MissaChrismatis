@@ -11,8 +11,8 @@ melody = \relative c' {
   \global
   \cadenzaOn
   f8[f8] g8[d8] f8 f4. \bar "'" g8[g8] bes8[g8] g8 f4. \bar "|" 
-  g8 g4 g8 a8[a8 bes8 bes8] c4 \bar "'" d8 [c8 bes8 (d8)] c4 \bar "|"
-  d8[bes8 a8 bes8] c4 f8 f4. \bar "|" bes='8[bes8 a8] g4 \bar "'" fis8[g8] bes8 a4 g8 fis8[g8] a4 d='8 d4. \bar "|"
+  g8 g4 g8 a8[a8 bes8 bes8] c4 \bar "'" d8 [c8 bes8 (d8)] c4. \bar "|"
+  d8[bes8 a8 bes8] c4 f,8 f4. \bar "|" bes='8[bes8 a8] g4 \bar "'" fis8[g8] bes8 a4 g8 fis8[g8] a4 d='8 d4. \bar "|"
   d8[d8] f4 \bar "'" g8[g8] c4 \bar "'" d8[ bes8 a8 bes8] c4 bes8 bes4. \bar "|."
   
   \cadenzaOff

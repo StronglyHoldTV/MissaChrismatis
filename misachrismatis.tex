@@ -26,7 +26,8 @@
 \hyphenpenalty=10000
 
 \makeatletter
-\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\clearpage}{}{}
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\patchcmd{\chapter}{\clearpage}{}{}{}
 \makeatother
 
 \newcommand{\blankpage}{%
@@ -151,7 +152,6 @@
     \end{titlepage}
 
 \newpage
-\blankpage
 \large
 \textbf{Texty v tejto brožúre, prevzaté z oficiálnych liturgických kníh, sa zhodujú s pôvodinou 
 a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišskom Podhradí.} 
@@ -226,14 +226,28 @@ Sláva Bohu na výsostiach...
 {\normalsize \lilypondfile{./Noty/gloria.ly}}
 
 \newpage
-\noindent\textcolor{red}{\textbf{Medzispev:}}
-\hfill{\small Katarina vl.}\par
+\noindent\textcolor{red}{\textbf{Žalm:}}\\
+\textcolor{red}{\textbf{\Rbar .}}\hfill{\small Katarina vl.}\par
 {\normalsize \lilypondfile{./Noty/zalm.ly}}
+\begin{enumerate}[label=\color{red}\bfseries\theenumi.]
+    \item Našiel som svojho služobníka Dávida, \textbf{\textcolor{red}{\gresixstar}}\\
+    pomazal som ho svojím svätým olejom. 
+    \item Pevne ho bude držať moja ruka, \textbf{\textcolor{red}{\gresixstar}}\\
+    a posilňovať moje rameno. \textcolor{red}{\textbf{\Rbar .}}
+    \item S ním bude moja vernosť a milosť, \textbf{\textcolor{red}{\gresixstar}}\\
+    a v mojom mene sa povznesie jeho moc. 
+    \item On bude volať ku mne: „Ty si môj Otec, \textbf{\textcolor{red}{\gresixstar}}\\
+    môj Boh a útočisťe mojej spásy.“ \textcolor{red}{\textbf{\Rbar .}}
+\end{enumerate}
 
 \noindent\textcolor{red}{\textbf{Verš pred evanjeliom:}}
 \hfill{\small gregoriánsky I. tónus}\par
 {\normalsize \lilypondfile{./Noty/aleluja.ly}}
+\vspace{1em}
+\noindent Duch Pána je nado mnou, \textbf{\textcolor{red}{\gresixstar}}
+poslal ma hlásať radostnú zvesť \\chudobným
 
+\newpage
 \chapter{Obnovenie kňazských sľubov}
 \annotation{\textbf{Odpovedajú len prítomní kňazi.}}\annotation{Po homílii sa biskup prihovorí takto alebo podobne:}
 
@@ -309,22 +323,23 @@ kňazov i ľud, privedie do večného života.}
 \chapter{Liturgia eucharistie}
 
 \section*{Offertórium}
-Prijmi, Pane, obetu, ktorú Ti tu skladám,
-naše malé snaženia, ktorých veľkosť hľadám.
-Verím, Pane, že si tu, každý deň a všade,
+{\small text: Miro Tóth}\hfill{\small hudba: Rizz Ortolani}\par
+\noindent Prijmi, Pane, obetu, ktorú Ti tu skladám,\\
+naše malé snaženia, ktorých veľkosť hľadám.\\
+Verím, Pane, že si tu, každý deň a všade,\\
 všetky naše tajomstvá, nech sú v Tvojej sláve.
 
-\noindent Všetkým nám, dal si dar, zákon svojej lásky.
-Všetkých nás, máš nás rád, nech Ti spieva každý.
-
+\noindent \textbf{\Rbar :} Všetkým nám, raz si dal, zákon svojej lásky.\\
+Všetkých nás, máš tak rád, nech Ti spieva každý.
+\vspace{0.5em}
 \section*{JKS 244/4}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \setcounter{enumi}{3}
     \item Oltár je, hľa, tvoj stôl svätý, - kde ti obetuje kňaz - chleba, vína dve podstaty, - jak si nám to kázal raz; - [:obeť veľkej velebnosti - ruší dávne pamätnosti, - pred tvár tvojej láskavosti - slávnostne pristupuje.:]
+    \newpage
     \item Naveky si, svätý Bože, - neba, zeme ty Pane, - všetko ťa len chváliť môže, - velebiť neprestajne. - [:V prevelebnej tu Sviatosti, - v dare toľkej láskavosti, - v svojej svätej prítomnosti - skrytý byť neprestaneš.:]
 \end{enumerate}
 
-\newpage
 \section*{Sanctus}
 \hfill{\small LS I 629}\par
 \normalsize
@@ -353,7 +368,7 @@ Všetkých nás, máš nás rád, nech Ti spieva každý.
 \\\euch{\startletter{P}rinášame ti ich najmä
 \\za tvoju svätú katolícku Cirkev
 \\v jednote s tvojím služobníkom,
-\\naším pápežom \textcolor{red}{M.}, s naším biskupom \textcolor{red}{M.*}
+\\naším pápežom \textcolor{red}{M.}, s naším biskupom \textcolor{red}{M.}
 \\a so všetkými, ktorí vyznávajú pravú,
 \\katolícku a apoštolskú vieru.
 \\Daruj svojej Cirkvi pokoj,
@@ -579,22 +594,19 @@ prijímania vrátane. Po požehnaní oleja hovorí sám hlavný celebrant:}
 \euch{\startletter{S}krze neho ty, Pane,\marginalia{\textcolor{red}{Hl}}
 \\všetky tieto dary stále tvoríš,
 \\posväcuješ, oživuješ, požehnávaš a nám dávaš.}
-
-
 \annotation{Hlavný celebrant vezme paténu s hostiou a jeden z koncelebrantov,
 ak niet diakona, kalich, pozdvihnú ich a hovoria:}
-
 \gregorioscore{./Noty/peripsum.gabc}
 \annotation{Všetci:}
 \\Amen (6x).
-
+\newpage
 \chapter{Obrad prijímania}
 \section*{Lámanie chleba}
 \hfill {\small LS I 756}\par
 {\normalsize \lilypondfile{./Noty/agnus.ly}}
-\vspace{0.1em}
 \section*{Spev na prijímanie}
-Ave verum corpus natum (zbor)
+{\small text: LU s.1856}\hfill{\small hudba: Michael John Trotta}\par
+\noindent Ave verum corpus natum (zbor)
 
 \section*{JKS 267}
 \large
@@ -626,11 +638,7 @@ Ave verum corpus natum (zbor)
 \section*{ANTIFÓNA NA JUBILEUM}
 {\normalsize \lilypondfile{./Noty/jub2.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
-    \item \uarc{Boh} vstá\udown{va} a jeho \uup{ne}priate\udown{lia} sa \uepi{tra}tia, \textbf{\textcolor{red}{\gresixstar}}\space 
-    \\spred jeho tváre utekajú \uup{tí,} čo ho \udown{ne}ná\uepi{vi}dia. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{A}le \udown{spra}vodliví sa môžu tešiť a \uup{ja}sať pred \udown{Bo}žou tvárou \textbf{\textcolor{red}{\gresixstar}}\space 
-    \\a \uup{v ra}dos\udown{ti} sa \uepi{ve}seliť. \textbf{\textcolor{red}{— \Rbar}}
-    \item \uarc{Chváľ}te \udown{Pá}na \uup{v je}\uarc{ho} \uepi{svä}tyni, \textbf{\textcolor{red}{\gresixstar}}
+    \item \uarc{Chváľ}te \udown{Pá}na \uup{v je}\uarc{ho} \uepi{svä}tyni, \textbf{\textcolor{red}{\gresixstar}} \marginalia{\textcolor{red}{Ž. 150}}
     \\chváľte ho \uup{na} jeho vzne\udown{še}nej \uepi{ob}lohe. \textbf{\textcolor{red}{— \Rbar}}
     \item \uarc{Chváľ}te \udown{ho} \uup{za} jeho \udown{či}ny \uepi{mo}hutné, \textbf{\textcolor{red}{\gresixstar}} 
     \\chváľte ho \uup{za} jeho nes\udown{mier}nu \uepi{ve}lebnosť. \textbf{\textcolor{red}{— \Rbar}}
@@ -644,7 +652,7 @@ Ave verum corpus natum (zbor)
     \item \uarc{Slá}va \udown{Ot}cu i Synu \uup{i} \udown{Du}chu \uepi{Svä}tému. \textbf{\textcolor{red}{\gresixstar}}  
     \\Ako bolo na počiatku, tak nech je i teraz i vždycky \uup{i} na veky \udown{ve}kov. \uepi{A}men. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
-
+\newpage
 \chapter{Požehnanie oleja katechumenov a posvätenie krizmy}
 \section*{\hfill POŽEHNANIE OLEJA KATECHUMENOV\hfill}
 \large
@@ -781,7 +789,6 @@ oleje nesú určení posluhujúci hneď za krížom.}
     \item Útočište hriešnikov, - Srdce zmilovania, - k tebe duša túli sa - v bôľny deň skonania. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
 \end{enumerate}
 \newpage
-\blankpage
 {\justifying
 Liturgické texty \textit{Omše svätenia olejov} boli doslovne prevzaté 
 z tretieho vydania \textit{Rímskeho misála} v slovenskom jazyku (KBS, Bratislava 2021), 

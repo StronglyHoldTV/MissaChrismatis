@@ -14,7 +14,7 @@ melody = \relative c'' {
 }
 
 verse = \lyricmode {
-  Vy -- ku -- pi -- teľ prij -- mi pie -- seň kto -- rou ťa dnes slá -- vi -- me.
+  Vy -- ku -- pi -- teľ prij -- mi pie -- seň kto -- rou ťa dnes chvá -- li -- me.
 }
 
 \score {
