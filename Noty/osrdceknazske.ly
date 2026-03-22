@@ -36,7 +36,7 @@ melody = \relative c' {
 verse = \lyricmode {
   Ó, Srd -- ce kňaz -- ské Kris -- to -- vo, Krv tvo -- ja na -- šej du -- še spá -- sa, ó tia -- hni srd -- cia
   lás -- ka -- vo, nech kaž -- dé srd -- ce Te -- be vzdá sa.
-  Ó srd -- ce Kris -- ta Veľ -- kňa -- za, keď kňa -- zom hro -- zí ná -- ka -- za, stráž by ti ver -- ne
+  "R: Ó" srd -- ce Kris -- ta Veľ -- kňa -- za, keď kňa -- zom hro -- zí ná -- ka -- za, stráž by ti ver -- ne
   kaž -- dý stál, aj po -- vel Ty daj kňaz -- ský Kráľ. stráž... Kráľ.
 }
 

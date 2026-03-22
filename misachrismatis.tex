@@ -15,6 +15,8 @@
 \usepackage{etoolbox}
 \usepackage{ragged2e}
 \usepackage{marginalia}
+\usepackage{multicol}
+\usepackage{svg}
 
 \marginaliasetup{
   pos=left, 
@@ -166,6 +168,9 @@ a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišs
 \noindent\textcolor{red}{\small (FANFÁRY)}
 \section*{Introit}
 \normalsize
+\hfill{\small hudba: L. Tomáško}\\
+\small{text: RM 267}\hfill{\small úprava: A. Akimiak}
+
 \lilypondfile{./Noty/vstupny_spev.ly}
 \large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
@@ -193,8 +198,9 @@ a sú vydané pre potrebu Katedrály sv. Martina v Spišskej Kapitule — Spišs
     \\a \textbf{roz}veseľuje ťa zvuk harfy z palácov zo \textbf{slo}no\uarc{vi}ny. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
 
-\noindent\textcolor{red}{\textbf{HYMNA JUBILEA}}
-\vspace{0.5em}
+\noindent\textcolor{red}{\textbf{HYMNA JUBILEA}}\\
+
+{\small{text a hudba: J. Habovštiaková}\hfill{\small úprava: S. Šurina}\par}
 {\normalsize \lilypondfile{./Noty/jub1.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
     \item Sláva ti, Bože, za Cirkev živú, ktorá v láske, jednote stojí,
@@ -243,6 +249,7 @@ Sláva Bohu na výsostiach...
 \noindent\textcolor{red}{\textbf{Verš pred evanjeliom:}}
 \hfill{\small gregoriánsky I. tónus}\par
 {\normalsize \lilypondfile{./Noty/aleluja.ly}}
+
 \vspace{1em}
 \noindent Duch Pána je nado mnou, \textbf{\textcolor{red}{\gresixstar}}
 poslal ma hlásať radostnú zvesť \\chudobným
@@ -323,13 +330,18 @@ kňazov i ľud, privedie do večného života.}
 \chapter{Liturgia eucharistie}
 
 \section*{Offertórium}
-{\small text: Miro Tóth}\hfill{\small hudba: Rizz Ortolani}\par
+
+\begin{center}
+Pieseň zo San Damiána\\
+\small{(františkánske pramene)}
+\end{center}
+{\small slov. text: Miro Tóth}\hfill{\small hudba: Riz Ortolani}\par
 \noindent Prijmi, Pane, obetu, ktorú Ti tu skladám,\\
 naše malé snaženia, ktorých veľkosť hľadám.\\
 Verím, Pane, že si tu, každý deň a všade,\\
 všetky naše tajomstvá, nech sú v Tvojej sláve.
 
-\noindent \textbf{\Rbar :} Všetkým nám, raz si dal, zákon svojej lásky.\\
+\noindent \textcolor{red}{\textbf{\Rbar :}} Všetkým nám, raz si dal, zákon svojej lásky.\\
 Všetkých nás, máš tak rád, nech Ti spieva každý.
 \vspace{0.5em}
 \section*{JKS 244/4}
@@ -432,7 +444,8 @@ s rozopätými rukami pokračuje:}
 \annotation{Zopne ruky.}
 \\\annotation{V nasledujúcich formulách treba predniesť Pánove slová jasne a zrozumiteľne,
 ako si to vyžaduje ich povaha.}
-\\\euch{\startletter{O}n večer pred svojím umučením}
+\newpage
+\euch{\startletter{O}n večer pred svojím umučením}
 
 \annotation{Hlavný celebrant vezme chlieb, drží ho trocha pozdvihnutý nad oltárom a pokračuje (koncelebranti s ním):}
 \\\euch{vzal chlieb
@@ -455,8 +468,8 @@ ako si to vyžaduje ich povaha.}
 }
 
 \annotation{Hlavný celebrant ukáže konsekrovanú hostiu ľudu,
-znova ju položí na paténu a pokľaknutím adoruje}
-\\\annotation{Koncelebranti pri pozdvihovaní pozrú na hostiu a potom sa pri pokľaknutí hlavného celebranta hlboko uklonia.}
+znova ju položí na paténu a pokľaknutím adoruje. Koncelebranti 
+pri pozdvihovaní pozrú na hostiu a potom sa pri pokľaknutí hlavného celebranta hlboko uklonia.}
 
 \annotation{Potom pokračujú:}
 \\\euch{Podobne po večeri}
@@ -540,7 +553,6 @@ koncelebrantom a každý sám prednesie tieto modlitby s rozopätými rukami a z
 \\a spia spánkom pokoja.}
 \\\annotation{Zopne ruky a všetci sa chvíľu modlia za zosnulých, ktorých si chcú
 osobitne pripomenúť.}
-
 \annotation{Potom s rozopätými rukami pokračuje:}
 \\\euch{Prosíme ťa, Pane, daj im a všetkým,
 \\ktorí odpočívajú v Kristovi,
@@ -591,10 +603,10 @@ modlitbu:}
 položí na pôvodné miesto a v omši sa pokračuje ako zvyčajne, až do
 prijímania vrátane. Po požehnaní oleja hovorí sám hlavný celebrant:}
 
-\euch{\startletter{S}krze neho ty, Pane,\marginalia{\textcolor{red}{Hl}}
+\noindent\hskip-0.2em\euch{\startletter{S}krze neho ty, Pane,\marginalia{\textcolor{red}{Hl}}
 \\všetky tieto dary stále tvoríš,
 \\posväcuješ, oživuješ, požehnávaš a nám dávaš.}
-\annotation{Hlavný celebrant vezme paténu s hostiou a jeden z koncelebrantov,
+\\\annotation{Hlavný celebrant vezme paténu s hostiou a jeden z koncelebrantov,
 ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \gregorioscore{./Noty/peripsum.gabc}
 \annotation{Všetci:}
@@ -605,8 +617,33 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
 \hfill {\small LS I 756}\par
 {\normalsize \lilypondfile{./Noty/agnus.ly}}
 \section*{Spev na prijímanie}
-{\small text: LU s.1856}\hfill{\small hudba: Michael John Trotta}\par
-\noindent Ave verum corpus natum (zbor)
+{\small text: LU s.1856}\hfill{\small hudba: Michael John Trotta}\\
+\noindent{\small slov. text: Os. obrady s.12}
+\begin{multicols}{2}
+\RaggedRight
+\noindent Ave verum Corpus natum\\
+De Maria Virgine:\\
+Vere passum, immolatum\\
+In cruce pro homine.\\
+Cuius latus perforatum\\
+Fluxit aqua et sanguine:\\
+Esto nobis praegustatum\\
+Mortis in examine.\\
+O Jesu dulcis, O Jesu pie,\\
+O Jesu Fili Mariae.\\
+
+
+\noindent Zdrav buď, pravé telo Krista\\
+z Panny Matky zrodené,\\
+za nás ako obeť čistá\\
+na kríži umučené.\\
+Z jeho boku tiekla voda\\
+i krv, čo nás obmyla;\\
+ochraňuj nás v chvíli smrti,\\
+sviatosť spásy premilá.\\
+Ježiš drahý, dobrotivý,\\
+Syn Márie milostivý!\\
+\end{multicols}
 
 \section*{JKS 267}
 \large
@@ -617,24 +654,24 @@ ak niet diakona, kalich, pozdvihnú ich a hovoria:}
     \item A v smrti hodine - obdar nás, prosíme, - vierou i dúfaním - a pravým pokáním, - by sme tu prijali teba, - po smrti prišli do neba, - [:naveky chváliť teba.:]
     \item Zletujte, anjeli, - a všetci veselí - s nami sa spojujte, - Presvätý! spievajte. - Zdrav’ buď tu, Kriste, v sviatosti - prítomný, Bože z výsosti, - [:v spôsobe chleba, vína.:]
 \end{enumerate}
-
+\newpage
 \section*{Ó, srdce kňaszké kristovo}
 \normalsize
 \lilypondfile{./Noty/osrdceknazske.ly}
 \large
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
-    \setcounter{enumi}{2}
-    \newpage
+    \setcounter{enumi}{1}
     \item Ó, Srdce kňazské Kristovo, daj svätých kňazov ľudu nášmu, nech
-    vzplanie láskou ich slovo, nech stvorí v ľudstve dušu krásnu. Ó,
-    Srdce Krista atď. 
+    vzplanie láskou ich slovo, nech stvorí v ľudstve dušu krásnu. 
+    \textbf{\textcolor{red}{— \Rbar}}
     \item Ó, Srdce kňazské Kristovo, bôľ lásky tvojej sa
     nás týka, veď odmrštia ťa surovo, náš hriech tkvie v tebe ako dýka.
-    Ó, Srdce Krista atď. 
+    \textbf{\textcolor{red}{— \Rbar}}
     \item Ó, Srdce kňazské Kristovo, nad nami zmiluj
     sa hriešnymi, hľa, každý tebe dá slovo: Viac už viac nebudeme
-    zlými. Ó, Srdce Krista atď.
+    zlými. \textbf{\textcolor{red}{— \Rbar}}
 \end{enumerate}
+\newpage
 \section*{ANTIFÓNA NA JUBILEUM}
 {\normalsize \lilypondfile{./Noty/jub2.ly}}
 \begin{enumerate}[label=\color{red}\bfseries\theenumi.]
@@ -786,9 +823,7 @@ oleje nesú určení posluhujúci hneď za krížom.}
     \item Božské Srdce, tvoji sme - v zasvätenia sľube, - zasvätení budeme - v tvojej žiť úľube. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
     \item Z trónu tvojej dobroty - v náš dom zlietla láska, - v našom srdci vládnuť chce, - láskou milosť božská. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
     \item V pokušení ochrana, - Srdce večnej sily. - Posilni nás, aby sme - v boji zvíťazili! [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
-    \item Útočište hriešnikov, - Srdce zmilovania, - k tebe duša túli sa - v bôľny deň skonania. [:Božské Srdce, buď s nami, - kraľuj, panuj nad nami, - nech sa v našej rodine - život viery rozvinie.:]
 \end{enumerate}
-\newpage
 {\justifying
 Liturgické texty \textit{Omše svätenia olejov} boli doslovne prevzaté 
 z tretieho vydania \textit{Rímskeho misála} v slovenskom jazyku (KBS, Bratislava 2021), 
@@ -819,4 +854,11 @@ Schola Cantorum Kňazského seminára biskupa Jána Vojtaššáka
 \vfill
 \noindent Ústav sakrálneho umenia TI TF KU\\
 v Spišskej Kapitule v Spišskom Podhradí 2026
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+    \includesvg[width=0.8\textwidth]{Logo2.svg}
+\end{center}
+
 \end{document}
